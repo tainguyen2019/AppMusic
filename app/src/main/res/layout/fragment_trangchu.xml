@@ -12,7 +12,27 @@
 
         <fragment
             android:id="@+id/fragmentbanner"
-            android:name="com.tainguyen.uit.appmusic.Fragment.FragmentBanner"
+            android:name="com.tainguyen.uit.appmusic.Fragment.Fragment_Banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+            android:name="com.tainguyen.uit.appmusic.Fragment.Fragment_Playlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+            android:name="com.tainguyen.uit.appmusic.Fragment.Fragment_ChuDeTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <fragment
+        android:name="com.tainguyen.uit.appmusic.Fragment.Fragment_AlbumHot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+        <fragment
+            android:name="com.tainguyen.uit.appmusic.Fragment.Fragment_HotSong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

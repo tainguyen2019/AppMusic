@@ -3,7 +3,9 @@ package com.tainguyen.uit.appmusic.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Album {
+import java.io.Serializable;
+
+public class Album implements Serializable {
 
 @SerializedName("IDAlbum")
 @Expose

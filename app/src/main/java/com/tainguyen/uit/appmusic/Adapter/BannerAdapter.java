@@ -1,17 +1,20 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.squareup.picasso.Picasso;
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
 import com.tainguyen.uit.appmusic.Model.QuangCao;
 import com.tainguyen.uit.appmusic.R;
 
@@ -39,7 +42,7 @@ public class BannerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_banner, null);
 
@@ -52,6 +55,15 @@ public class BannerAdapter extends PagerAdapter {
         Picasso.with(context).load(arrayListbanner.get(position).getHinhBaiHat()).into(imageViewSongBanner);
         textViewTitleSongBanner.setText(arrayListbanner.get(position).getTenBaiHat());
         textViewContentBanner.setText(arrayListbanner.get(position).getNoiDung());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ListSongActivity.class);
+                intent.putExtra("banner", arrayListbanner.get(position));
+                context.startActivity(intent);
+            }
+        });
 
         container.addView(view);
 

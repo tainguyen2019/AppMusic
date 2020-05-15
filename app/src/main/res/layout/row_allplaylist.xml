@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageView
+        android:id="@+id/imageViewAllPlaylist"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textViewTenPlaylist"
+        android:layout_below="@id/imageViewAllPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginLeft="7dp"
+        android:ellipsize="end"
+        android:maxWidth="200dp"
+        android:maxLines="2"
+        android:text="Nhung ca khuc hay nhat 2020"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+
+    <TextView
+        android:layout_below="@id/textViewTenPlaylist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:text="Various Artists"
+        android:textColor="#9C9191"
+        android:textSize="13sp" />
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.tainguyen.uit.appmusic.Fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,6 +22,9 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.squareup.picasso.Picasso;
+import com.tainguyen.uit.appmusic.Activity.AllChuDeActivity;
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
+import com.tainguyen.uit.appmusic.Activity.ListTheLoaiActivity;
 import com.tainguyen.uit.appmusic.Adapter.BannerAdapter;
 import com.tainguyen.uit.appmusic.Model.ChuDe;
 import com.tainguyen.uit.appmusic.Model.ChuDeTheLoai;
@@ -49,6 +53,14 @@ public class Fragment_ChuDeTheLoai extends Fragment {
         view = inflater.inflate(R.layout.fragment_chudetheloai, container, false);
         horizontalScrollView = view.findViewById(R.id.horizoltalScrollView);
         textView_ViewMore = view.findViewById(R.id.textView_ViewMore);
+
+        textView_ViewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AllChuDeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         getData();
 
@@ -96,6 +108,16 @@ public class Fragment_ChuDeTheLoai extends Fragment {
                     cardView.addView(imageView);
                     cardView.addView(textViewTitle);
                     linearLayout.addView(cardView);
+
+                    final int finalI = i;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ListTheLoaiActivity.class);
+                            intent.putExtra("item_chude", chuDeArrayList.get(finalI));
+                            startActivity(intent);
+                        }
+                    });
                 }
 
                 for(int j = 0; j < theLoaiArrayList.size(); j++){
@@ -119,6 +141,16 @@ public class Fragment_ChuDeTheLoai extends Fragment {
                     cardView.addView(imageView);
                     cardView.addView(textViewTitle);
                     linearLayout.addView(cardView);
+
+                    final int finalJ = j;
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getActivity(), ListSongActivity.class);
+                            intent.putExtra("item_theloai", theLoaiArrayList.get(finalJ));
+                            startActivity(intent);
+                        }
+                    });
                 }
 
                 horizontalScrollView.addView(linearLayout);

@@ -1,10 +1,12 @@
 package com.tainguyen.uit.appmusic.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ListView;
@@ -13,6 +15,8 @@ import android.widget.ListAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.tainguyen.uit.appmusic.Activity.AllPlaylistActivity;
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
 import com.tainguyen.uit.appmusic.Adapter.PlaylistAdapter;
 import com.tainguyen.uit.appmusic.Model.Playlist;
 import com.tainguyen.uit.appmusic.R;
@@ -40,6 +44,14 @@ public class Fragment_Playlist extends Fragment_Banner {
         textViewTitlePlayList = view.findViewById(R.id.textViewTitlePlaylist);
         textView_ViewMore = view.findViewById(R.id.textView_ViewMore);
         getData();
+
+        textView_ViewMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AllPlaylistActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -53,6 +65,15 @@ public class Fragment_Playlist extends Fragment_Banner {
                 playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_expandable_list_item_1, playlists);
                 listViewPlaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(listViewPlaylist);
+
+                listViewPlaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getActivity(), ListSongActivity.class);
+                        intent.putExtra("item_playlist", playlists.get(position));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

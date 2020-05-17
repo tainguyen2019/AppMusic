@@ -1,10 +1,14 @@
 package com.tainguyen.uit.appmusic.Fragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -13,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.textfield.TextInputEditText;
 import com.tainguyen.uit.appmusic.Adapter.TimkiemViewPagerAdapter;
 import com.tainguyen.uit.appmusic.R;
 
@@ -60,9 +65,55 @@ public class Fragment_TimKiem extends Fragment {
         this.viewPager.setAdapter(adapter);
     }
 
-    public void initializeEvents() {
+    public void initializeKeywordAndButtonCancel() {
+        final Button button_cancel = (Button) this.view.findViewById(R.id.button_tk_cancel);
+        final TextInputEditText edittext_keyword = (TextInputEditText) this.view.findViewById(R.id.edittext_tk_keyword);
+
+        //Khi nhập keyword
+        edittext_keyword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                //TODO
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                //TODO
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (s.toString().length() < 1) {
+                    button_cancel.setVisibility(View.GONE);
+                }
+                else {
+                    button_cancel.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //Làm bàn phím ảo ẩn đi
+        edittext_keyword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus == false) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) v.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
+            }
+        });
+
+        //Click nút cancel khi nhập keyword
+        button_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edittext_keyword.setText(null);
+                edittext_keyword.clearFocus();
+            }
+        });
     }
 
-
-
+    public void initializeEvents() {
+        this.initializeKeywordAndButtonCancel();
+    }
 }

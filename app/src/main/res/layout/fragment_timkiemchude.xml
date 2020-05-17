@@ -1,11 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/gridview_tkcd_chudes"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchMode="columnWidth"
-    android:layout_column="2"
-    android:numColumns="2">
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3f51b5">
 
 
-</GridView>
+        <Button
+            android:id="@+id/button_tkcd_suffer_all"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#3f51b5"
+            android:gravity="center"
+            android:text="⤮"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button_tkcd_sort"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#3f51b5"
+            android:gravity="center"
+            android:text="⥮"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_tkcd_filter"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#3f51b5"
+            android:gravity="center"
+            android:text="⟱"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_tkcd_groupby"
+            android:layout_width="50sp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="#3f51b5"
+            android:gravity="center"
+            android:text="⊛"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview_tkcd_chudes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchMode="columnWidth"
+        android:layout_column="2"
+        android:numColumns="2">
+
+
+    </GridView>
+
+</LinearLayout>
+

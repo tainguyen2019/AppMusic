@@ -12,19 +12,41 @@
         android:background="#3f51b5"
         android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:gravity="center_vertical"
-            android:text="  Tất cả bài hát"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="#3f51b5"
+            android:orientation="horizontal">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edittext_tk_keyword"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:gravity="center_vertical"
+                android:hint="Nhập từ khóa, tên bài hát, tên nghệ sĩ, ..."
+                android:inputType="textLongMessage"
+                android:paddingLeft="10sp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#81FFFFFF"
+                android:textSize="15sp" />
+
+
+            <Button
+                android:id="@+id/button_tk_cancel"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="#00FFFFFF"
+                android:gravity="center|center_vertical"
+                android:text="✕"
+                android:textColor="#81FFFFFF"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/button_lammoi"
@@ -33,20 +55,11 @@
             android:layout_margin="0dp"
             android:backgroundTint="#3f51b5"
             android:gravity="center"
-            android:text="↺"
+            android:text="⥀"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_timkiem"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="0dp"
-            android:backgroundTint="#3f51b5"
-            android:gravity="center"
-            android:text="☰"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="30sp"
+            android:padding="0dp" />
 
     </LinearLayout>
 

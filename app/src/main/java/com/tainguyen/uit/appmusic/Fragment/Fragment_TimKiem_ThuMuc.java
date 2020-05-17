@@ -12,7 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.tainguyen.uit.appmusic.Adapter.TimKiemBaiHatAdapter;
+import com.tainguyen.uit.appmusic.Adapter.TimKiemNgheSiAdapter;
 import com.tainguyen.uit.appmusic.Adapter.TimKiemThuMucAdapter;
+import com.tainguyen.uit.appmusic.Model.NgheSi;
 import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.Model.TheLoai;
 import com.tainguyen.uit.appmusic.R;
@@ -22,25 +24,26 @@ import java.util.Random;
 
 public class Fragment_TimKiem_ThuMuc extends Fragment {
     private View view;
+    private ArrayList<TheLoai> dataArrayList = new ArrayList<>();
+    private TimKiemThuMucAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.view = inflater.inflate(R.layout.fragment_timkiemthumuc, container, false);
 
+        this.initializeList();
         this.UpdateFragment();
 
         return this.view;
     }
 
-    public void UpdateFragment() {
+    public void initializeList() {
         GridView gridView = (GridView) this.view.findViewById(R.id.gridview_tktm_thumucs);
-
-        ArrayList<TheLoai> theLoaiArrayList = new ArrayList<>();
 
         //Tạo ra danh sách
         for (int i=0; i<100; i+=1) {
-            theLoaiArrayList.add(new TheLoai(
+            this.dataArrayList.add(new TheLoai(
                     "" + i,
                     "" + i,
                     "Thể loại " + i,
@@ -49,9 +52,11 @@ public class Fragment_TimKiem_ThuMuc extends Fragment {
             ));
         }
 
-        TimKiemThuMucAdapter timKiemThuMucAdapter = new TimKiemThuMucAdapter(this.getContext(), theLoaiArrayList);
-        gridView.setAdapter(timKiemThuMucAdapter);
+        this.adapter = new TimKiemThuMucAdapter(this.getContext(), this.dataArrayList);
+        gridView.setAdapter(this.adapter);
+    }
 
-        timKiemThuMucAdapter.notifyDataSetChanged();
+    public void UpdateFragment() {
+        this.adapter.notifyDataSetChanged();
     }
 }

@@ -12,17 +12,6 @@
         android:background="#3f51b5"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button_home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="0dp"
-            android:backgroundTint="#3f51b5"
-            android:gravity="center"
-            android:text="＜"
-            android:textColor="#ADFFFFFF"
-            android:textSize="20sp" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -44,7 +33,7 @@
             android:layout_margin="0dp"
             android:backgroundTint="#3f51b5"
             android:gravity="center"
-            android:text="᪡"
+            android:text="↺"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 

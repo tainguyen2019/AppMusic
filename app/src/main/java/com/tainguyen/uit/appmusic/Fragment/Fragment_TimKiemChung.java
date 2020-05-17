@@ -30,7 +30,6 @@ import java.util.ArrayList;
 
 public class Fragment_TimKiemChung extends Fragment {
     private View view;
-    private TabLayout parentTabLayout;
 
     @Nullable
     @Override
@@ -42,10 +41,6 @@ public class Fragment_TimKiemChung extends Fragment {
         this.initializeEvents();
 
         return this.view;
-    }
-
-    public void setParentTabLayout(TabLayout parentTabLayout) {
-        this.parentTabLayout = parentTabLayout;
     }
 
     public void UpdateFragment() {
@@ -79,35 +74,6 @@ public class Fragment_TimKiemChung extends Fragment {
         listView.setAdapter(timKiemChungAdapter);
 
         timKiemChungAdapter.notifyDataSetChanged();
-    }
-
-    public void initializeEventButtonHome() {
-        final Button button_cancel = (Button) this.view.findViewById(R.id.button_tkc_back);
-
-        button_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (parentTabLayout.getVisibility() != View.GONE) {
-                    parentTabLayout.setVisibility(View.GONE);
-                }
-                else {
-                    parentTabLayout.setVisibility(View.VISIBLE);
-                }
-
-                updateTextButtonBack();
-            }
-        });
-    }
-
-    public void updateTextButtonBack() {
-        final Button button_cancel = (Button) this.view.findViewById(R.id.button_tkc_back);
-
-        if (parentTabLayout.getVisibility() == View.GONE) {
-            button_cancel.setText("＜");
-        }
-        else {
-            button_cancel.setText("＞");
-        }
     }
 
     public void initializeKeywordAndButtonCancel() {
@@ -159,7 +125,6 @@ public class Fragment_TimKiemChung extends Fragment {
     }
 
     public void initializeEvents() {
-        this.initializeEventButtonHome();
         this.initializeKeywordAndButtonCancel();
     }
 }

@@ -18,7 +18,6 @@ import com.tainguyen.uit.appmusic.R;
 
 public class Fragment_TimKiem extends Fragment {
     private View view;
-    private TabLayout parentTabLayout;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -44,10 +43,6 @@ public class Fragment_TimKiem extends Fragment {
         return view;
     }
 
-    public void setParentTabLayout(TabLayout parentTabLayout) {
-        this.parentTabLayout = parentTabLayout;
-    }
-
     private void setupViewPager() {
         TimkiemViewPagerAdapter adapter = new TimkiemViewPagerAdapter(this.getFragmentManager());
 
@@ -65,37 +60,7 @@ public class Fragment_TimKiem extends Fragment {
         this.viewPager.setAdapter(adapter);
     }
 
-    public void initializeEventButtonHome() {
-        final Button button_home = (Button) this.view.findViewById(R.id.button_home);
-
-        button_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (parentTabLayout.getVisibility() != View.GONE) {
-                    parentTabLayout.setVisibility(View.GONE);
-                }
-                else {
-                    parentTabLayout.setVisibility(View.VISIBLE);
-                }
-
-                updateTextButtonHome();
-            }
-        });
-    }
-
-    public void updateTextButtonHome() {
-        final Button button_home = (Button) this.view.findViewById(R.id.button_home);
-
-        if (parentTabLayout.getVisibility() == View.GONE) {
-            button_home.setText("＜");
-        }
-        else {
-            button_home.setText("＞");
-        }
-    }
-
     public void initializeEvents() {
-        this.initializeEventButtonHome();
     }
 
 

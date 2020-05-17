@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -36,40 +37,16 @@ public class MainActivity extends AppCompatActivity {
     private void Init() {
         MainViewPagerAdapter mainViewPagerAdapter = new MainViewPagerAdapter(this.getSupportFragmentManager());
 
-        mainViewPagerAdapter.addFragment(new Fragment_TrangChu(), "\uD83C\uDFE0");
+        mainViewPagerAdapter.addFragment(new Fragment_TrangChu(), "⛫");
 
         this.fragment_timKiem = new Fragment_TimKiem();
-        this.fragment_timKiem.setParentTabLayout(this.tabLayout);
         mainViewPagerAdapter.addFragment(this.fragment_timKiem, "☰");
 
         this.fragment_timKiemChung = new Fragment_TimKiemChung();
-        this.fragment_timKiemChung.setParentTabLayout(this.tabLayout);
-        mainViewPagerAdapter.addFragment(this.fragment_timKiemChung, "\uD83D\uDD0D");
+        mainViewPagerAdapter.addFragment(this.fragment_timKiemChung, "⨀");
 
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 1) {
-                    fragment_timKiem.updateTextButtonHome();
-                }
-                else if (tab.getPosition() == 2) {
-                    fragment_timKiemChung.updateTextButtonBack();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                //
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                //
-            }
-        });
     }
 
     @Override

@@ -12,17 +12,6 @@
         android:background="#3f51b5"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button_tkc_back"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:background="#00FFFFFF"
-            android:gravity="center|center_vertical"
-            android:text="＜"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edittext_tkc_keyword"
             android:layout_width="wrap_content"
@@ -32,6 +21,7 @@
             android:gravity="center_vertical"
             android:hint="Nhập từ khóa, tên bài hát, tên nghệ sĩ, ..."
             android:inputType="textLongMessage"
+            android:paddingLeft="10sp"
             android:textColor="#FFFFFF"
             android:textColorHint="#81FFFFFF"
             android:textSize="15sp" />

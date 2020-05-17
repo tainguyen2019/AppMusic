@@ -25,6 +25,10 @@ public class Fragment_TimKiem_NgheSi extends Fragment {
     private ArrayList<NgheSi> dataArrayList = new ArrayList<>();
     private TimKiemNgheSiAdapter adapter;
 
+    public ArrayList<NgheSi> getDataArrayList() {
+        return dataArrayList;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,20 +42,6 @@ public class Fragment_TimKiem_NgheSi extends Fragment {
 
     public void initializeList() {
         ListView listView = (ListView) this.view.findViewById(R.id.listview_tkns_nghesi);
-
-        //Tạo ra danh sách
-        for (int i=0; i<100; i+=1) {
-            this.dataArrayList.add(new NgheSi(
-                    "" + i,
-                    "Nghệ sĩ " + i,
-                    new Random().nextInt(1000),
-                    new Random().nextInt(1000),
-                    new Random().nextInt(1000),
-                    new Random().nextInt(1000),
-                    new Random().nextInt(1000),
-                    ""
-            ));
-        }
 
         this.adapter = new TimKiemNgheSiAdapter(this.getContext(), this.dataArrayList);
         listView.setAdapter(this.adapter);

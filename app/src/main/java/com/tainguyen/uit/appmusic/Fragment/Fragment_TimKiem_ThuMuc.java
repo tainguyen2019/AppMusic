@@ -27,6 +27,10 @@ public class Fragment_TimKiem_ThuMuc extends Fragment {
     private ArrayList<TheLoai> dataArrayList = new ArrayList<>();
     private TimKiemThuMucAdapter adapter;
 
+    public ArrayList<TheLoai> getDataArrayList() {
+        return dataArrayList;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,17 +44,6 @@ public class Fragment_TimKiem_ThuMuc extends Fragment {
 
     public void initializeList() {
         GridView gridView = (GridView) this.view.findViewById(R.id.gridview_tktm_thumucs);
-
-        //Tạo ra danh sách
-        for (int i=0; i<100; i+=1) {
-            this.dataArrayList.add(new TheLoai(
-                    "" + i,
-                    "" + i,
-                    "Thể loại " + i,
-                    "",
-                    new Random().nextInt(1000)
-            ));
-        }
 
         this.adapter = new TimKiemThuMucAdapter(this.getContext(), this.dataArrayList);
         gridView.setAdapter(this.adapter);

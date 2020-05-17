@@ -4,22 +4,24 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Album {
-    @SerializedName("IDAlbum")
+    @SerializedName("id")
     @Expose
     private String id;
 
-    @SerializedName("TenAlbum")
+    @SerializedName("name")
     @Expose
     private String name;
 
-    @SerializedName("CaSi")
+    @SerializedName("casi")
     @Expose
     private String caSi;
 
-    @SerializedName("HinhNen")
+    @SerializedName("hinhnen")
     @Expose
     private String hinhNen;
 
+    @SerializedName("sobaihat")
+    @Expose
     private Integer soBaihat;
 
     public Album() {

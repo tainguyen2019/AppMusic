@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +21,17 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tainguyen.uit.appmusic.Adapter.TimkiemViewPagerAdapter;
+import com.tainguyen.uit.appmusic.Model.Album;
 import com.tainguyen.uit.appmusic.R;
+import com.tainguyen.uit.appmusic.Service.TimKiemService;
+
+import java.security.Key;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Fragment_TimKiem extends Fragment {
     private View view;
@@ -89,6 +101,33 @@ public class Fragment_TimKiem extends Fragment {
                 else {
                     button_cancel.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        //Bắt sự kiện nhấn enter trong edittext_keyword
+        edittext_keyword.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    final String keyword = edittext_keyword.getText().toString();
+
+                    TimKiemService.getInstance().getTimkiemAlbumCallback(keyword).enqueue(new Callback<List<Album>>() {
+                        @Override
+                        public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
+                            edittext_keyword.setText(((ArrayList<Album>) response.body()).toString());
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Album>> call, Throwable t) {
+                            Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi, keyword: " + keyword, Toast.LENGTH_LONG);
+                        }
+                    });
+
+                    edittext_keyword.clearFocus();
+
+                    return true;
+                }
+                return false;
             }
         });
 

@@ -22,6 +22,10 @@ public class Fragment_TimKiem_Album extends Fragment {
     private ArrayList<Album> dataArrayList = new ArrayList<>();
     private TimKiemAlbumAdapter adapter;
 
+    public ArrayList<Album> getDataArrayList() {
+        return dataArrayList;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,17 +39,6 @@ public class Fragment_TimKiem_Album extends Fragment {
 
     public void initializeList() {
         ListView listView = (ListView) this.view.findViewById(R.id.listview_tkab_albums);
-
-        //Tạo ra danh sách
-        for (int i=0; i<100; i+=1) {
-            dataArrayList.add(new Album(
-                    ""+i,
-                    "Album " + i,
-                    "Ca sĩ " + i,
-                    "",
-                    new Random().nextInt(1000)
-            ));
-        }
 
        this.adapter = new TimKiemAlbumAdapter(this.getContext(), dataArrayList);
         listView.setAdapter(this.adapter);

@@ -25,6 +25,10 @@ public class Fragment_TimKiem_BaiHat extends Fragment {
     private ArrayList<Song> dataArrayList = new ArrayList<>();
     private TimKiemBaiHatAdapter adapter;
 
+    public ArrayList<Song> getDataArrayList() {
+        return dataArrayList;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,12 +42,6 @@ public class Fragment_TimKiem_BaiHat extends Fragment {
 
     public void initializeList() {
         ListView listView = (ListView) this.view.findViewById(R.id.listview_tkbh_baihat);
-
-        //Tạo ra danh sách
-        for (int i=0; i<100; i+=1) {
-            this.dataArrayList.add(new Song("" + i, "Bài hát " + i, "Ca siz " + i,
-                    "", "", ""+new Random().nextInt(1000) +1));
-        }
 
         this.adapter = new TimKiemBaiHatAdapter(this.getContext(), this.dataArrayList);
         listView.setAdapter(this.adapter);

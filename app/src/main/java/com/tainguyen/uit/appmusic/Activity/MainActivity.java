@@ -5,17 +5,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.tainguyen.uit.appmusic.Adapter.MainViewPagerAdapter;
 import com.tainguyen.uit.appmusic.Fragment.Fragment_TimKiem;
-import com.tainguyen.uit.appmusic.Fragment.Fragment_TimKiemChung;
 import com.tainguyen.uit.appmusic.Fragment.Fragment_TrangChu;
 import com.tainguyen.uit.appmusic.R;
 
@@ -24,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Fragment_TimKiem fragment_timKiem;
-    private Fragment_TimKiemChung fragment_timKiemChung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         this.fragment_timKiem = new Fragment_TimKiem();
         mainViewPagerAdapter.addFragment(this.fragment_timKiem, "☰");
-
-        this.fragment_timKiemChung = new Fragment_TimKiemChung();
-        mainViewPagerAdapter.addFragment(this.fragment_timKiemChung, "⨀");
 
         viewPager.setAdapter(mainViewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

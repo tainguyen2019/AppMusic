@@ -25,6 +25,10 @@ public class Fragment_TimKiem_ChuDe extends Fragment {
     private ArrayList<ChuDe> dataArrayList = new ArrayList<>();
     private TimKiemChuDeAdapter adapter;
 
+    public ArrayList<ChuDe> getDataArrayList() {
+        return dataArrayList;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,16 +42,6 @@ public class Fragment_TimKiem_ChuDe extends Fragment {
 
     public void initializeList() {
         GridView gridView = (GridView) this.view.findViewById(R.id.gridview_tkcd_chudes);
-
-        //Tạo ra danh sách bài hát
-        for (int i=0; i<100; i+=1) {
-            this.dataArrayList.add(new ChuDe(
-                    "" + i,
-                    "Chủ đề " + i,
-                    "",
-                    new Random().nextInt(1000)
-            ));
-        }
 
         this.adapter = new TimKiemChuDeAdapter(this.getContext(), this.dataArrayList);
         gridView.setAdapter(this.adapter);

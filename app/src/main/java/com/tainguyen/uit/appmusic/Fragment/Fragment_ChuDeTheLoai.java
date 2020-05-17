@@ -1,10 +1,8 @@
 package com.tainguyen.uit.appmusic.Fragment;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,25 +17,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import com.squareup.picasso.Picasso;
-import com.tainguyen.uit.appmusic.Activity.AllChuDeActivity;
-import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
-import com.tainguyen.uit.appmusic.Activity.ListTheLoaiActivity;
-import com.tainguyen.uit.appmusic.Adapter.BannerAdapter;
 import com.tainguyen.uit.appmusic.Model.ChuDe;
 import com.tainguyen.uit.appmusic.Model.ChuDeTheLoai;
-import com.tainguyen.uit.appmusic.Model.QuangCao;
 import com.tainguyen.uit.appmusic.Model.TheLoai;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.APIService;
 import com.tainguyen.uit.appmusic.Service.IDataService;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,14 +43,6 @@ public class Fragment_ChuDeTheLoai extends Fragment {
         view = inflater.inflate(R.layout.fragment_chudetheloai, container, false);
         horizontalScrollView = view.findViewById(R.id.horizoltalScrollView);
         textView_ViewMore = view.findViewById(R.id.textView_ViewMore);
-
-        textView_ViewMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AllChuDeActivity.class);
-                startActivity(intent);
-            }
-        });
 
         getData();
 
@@ -98,7 +80,7 @@ public class Fragment_ChuDeTheLoai extends Fragment {
                     }
 
                     TextView textViewTitle = new TextView(getActivity());
-                    textViewTitle.setText(chuDeArrayList.get(i).getTenChuDe());
+                    textViewTitle.setText(chuDeArrayList.get(i).getName());
                     textViewTitle.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                     textViewTitle.setTextSize(20);
                     textViewTitle.setTypeface(null, Typeface.BOLD);
@@ -108,16 +90,6 @@ public class Fragment_ChuDeTheLoai extends Fragment {
                     cardView.addView(imageView);
                     cardView.addView(textViewTitle);
                     linearLayout.addView(cardView);
-
-                    final int finalI = i;
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(getActivity(), ListTheLoaiActivity.class);
-                            intent.putExtra("item_chude", chuDeArrayList.get(finalI));
-                            startActivity(intent);
-                        }
-                    });
                 }
 
                 for(int j = 0; j < theLoaiArrayList.size(); j++){
@@ -131,7 +103,7 @@ public class Fragment_ChuDeTheLoai extends Fragment {
                     }
 
                     TextView textViewTitle = new TextView(getActivity());
-                    textViewTitle.setText(theLoaiArrayList.get(j).getTenTheLoai());
+                    textViewTitle.setText(theLoaiArrayList.get(j).getName());
                     textViewTitle.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                     textViewTitle.setTextSize(20);
                     textViewTitle.setTypeface(null, Typeface.BOLD);
@@ -141,16 +113,6 @@ public class Fragment_ChuDeTheLoai extends Fragment {
                     cardView.addView(imageView);
                     cardView.addView(textViewTitle);
                     linearLayout.addView(cardView);
-
-                    final int finalJ = j;
-                    imageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(getActivity(), ListSongActivity.class);
-                            intent.putExtra("item_theloai", theLoaiArrayList.get(finalJ));
-                            startActivity(intent);
-                        }
-                    });
                 }
 
                 horizontalScrollView.addView(linearLayout);

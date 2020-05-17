@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff00">
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3f51b5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="0dp"
+            android:backgroundTint="#3f51b5"
+            android:gravity="center"
+            android:text="＜"
+            android:textColor="#ADFFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:gravity="center_vertical"
+            android:text="  Tất cả bài hát"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button_lammoi"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="0dp"
+            android:backgroundTint="#3f51b5"
+            android:gravity="center"
+            android:text="᪡"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_timkiem"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="0dp"
+            android:backgroundTint="#3f51b5"
+            android:gravity="center"
+            android:text="☰"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/filters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3f51b5"
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabIndicatorGravity="bottom"
+        app:tabPadding="10dp"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Menu"
+        app:tabTextColor="#fff">
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/timkiem_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

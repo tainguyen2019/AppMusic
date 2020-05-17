@@ -32,7 +32,7 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder viewHolder = null;
         if(convertView == null){
-            LayoutInflater inflater = LayoutInflater.from(getContext());
+            LayoutInflater inflater = LayoutInflater.from(this.getContext());
             convertView = inflater.inflate(R.layout.row_playlist, null);
             viewHolder = new ViewHolder();
             viewHolder.textViewTenPlaylist = convertView.findViewById(R.id.textViewTenPlaylist);
@@ -44,10 +44,10 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Playlist playlist = getItem(position);
-        Picasso.with(getContext()).load(playlist.getHinhNen()).into(viewHolder.imageViewBackgroundPlaylist);
-        Picasso.with(getContext()).load(playlist.getHinhNen()).into(viewHolder.imageViewPlaylist);
-        viewHolder.textViewTenPlaylist.setText(playlist.getTenPlaylist());
+        Playlist playlist = this.getItem(position);
+        Picasso.with(this.getContext()).load(playlist.getHinhNen()).into(viewHolder.imageViewBackgroundPlaylist);
+        Picasso.with(this.getContext()).load(playlist.getHinhNen()).into(viewHolder.imageViewPlaylist);
+        viewHolder.textViewTenPlaylist.setText(playlist.getName());
 
 
         return convertView;

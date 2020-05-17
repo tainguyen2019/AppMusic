@@ -1,11 +1,9 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
-import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
 import com.tainguyen.uit.appmusic.Model.Album;
 import com.tainguyen.uit.appmusic.R;
 
@@ -40,7 +37,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Album album = albumArrayList.get(position);
-        holder.textViewTitleAlbum.setText(album.getTenAlbum());
+        holder.textViewTitleAlbum.setText(album.getName());
         holder.textViewSinger.setText(album.getCaSi());
         Picasso.with(context).load(album.getHinhNen()).into(holder.imageViewAlbum);
     }
@@ -59,15 +56,6 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
             imageViewAlbum = itemView.findViewById(R.id.imageViewAlbum);
             textViewSinger = itemView.findViewById(R.id.textViewSinger);
             textViewTitleAlbum = itemView.findViewById(R.id.textViewTitleAlbum);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, ListSongActivity.class);
-                    intent.putExtra("item_album", albumArrayList.get(getPosition()));
-                    context.startActivity(intent);
-                }
-            });
         }
     }
 }

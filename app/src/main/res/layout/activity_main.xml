@@ -15,13 +15,16 @@
         android:layout_weight="1"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        app:tabIndicatorColor="#00E1FF"
         app:tabMode="fixed"
         app:tabSelectedTextColor="#00E1FF"
-        app:tabTextColor="#000000"
         app:tabIndicatorHeight="2dp"
-        android:background="@android:color/transparent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"
+        android:background="#3f51b5"
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabIndicatorGravity="bottom"
+        app:tabPadding="10dp"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Menu"
+        app:tabTextColor="#fff"/>
 
 </LinearLayout>

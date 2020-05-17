@@ -36,7 +36,7 @@ public class HotSongAdapter extends RecyclerView.Adapter<HotSongAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Song song = songArrayList.get(position);
-        holder.textViewHotSong.setText(song.getTenBaiHat());
+        holder.textViewHotSong.setText(song.getName());
         holder.textViewCaSi.setText(song.getCaSi());
         holder.textViewLuotNghe.setText(song.getLuotNghe() + " lượt nghe");
         Picasso.with(context).load(song.getHinhAnh()).into(holder.imageViewHotSong);

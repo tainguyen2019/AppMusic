@@ -3,75 +3,88 @@ package com.tainguyen.uit.appmusic.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+public class QuangCao {
+    @SerializedName("IDQuangCao")
+    @Expose
+    private String iDQuangCao;
 
-public class QuangCao implements Serializable {
+    @SerializedName("HinhAnh")
+    @Expose
+    private String hinhAnh;
 
-@SerializedName("IDQuangCao")
-@Expose
-private String iDQuangCao;
-@SerializedName("HinhAnh")
-@Expose
-private String hinhAnh;
-@SerializedName("NoiDung")
-@Expose
-private String noiDung;
-@SerializedName("IDBaiHat")
-@Expose
-private String iDBaiHat;
-@SerializedName("TenBaiHat")
-@Expose
-private String tenBaiHat;
-@SerializedName("HinhBaiHat")
-@Expose
-private String hinhBaiHat;
+    @SerializedName("NoiDung")
+    @Expose
+    private String noiDung;
 
-public String getIDQuangCao() {
-return iDQuangCao;
-}
+    @SerializedName("IDBaiHat")
+    @Expose
+    private String iDBaiHat;
 
-public void setIDQuangCao(String iDQuangCao) {
-this.iDQuangCao = iDQuangCao;
-}
+    @SerializedName("TenBaiHat")
+    @Expose
+    private String tenBaiHat;
 
-public String getHinhAnh() {
-return hinhAnh;
-}
+    @SerializedName("HinhBaiHat")
+    @Expose
+    private String hinhBaiHat;
 
-public void setHinhAnh(String hinhAnh) {
-this.hinhAnh = hinhAnh;
-}
+    public String getIDQuangCao() {
+    return iDQuangCao;
+    }
 
-public String getNoiDung() {
-return noiDung;
-}
+    public void setIDQuangCao(String iDQuangCao) {
+    this.iDQuangCao = iDQuangCao;
+    }
 
-public void setNoiDung(String noiDung) {
-this.noiDung = noiDung;
-}
+    public String getHinhAnh() {
+    return hinhAnh;
+    }
 
-public String getIDBaiHat() {
-return iDBaiHat;
-}
+    public void setHinhAnh(String hinhAnh) {
+    this.hinhAnh = hinhAnh;
+    }
 
-public void setIDBaiHat(String iDBaiHat) {
-this.iDBaiHat = iDBaiHat;
-}
+    public String getNoiDung() {
+    return noiDung;
+    }
 
-public String getTenBaiHat() {
-return tenBaiHat;
-}
+    public void setNoiDung(String noiDung) {
+    this.noiDung = noiDung;
+    }
 
-public void setTenBaiHat(String tenBaiHat) {
-this.tenBaiHat = tenBaiHat;
-}
+    public String getIDBaiHat() {
+    return iDBaiHat;
+    }
 
-public String getHinhBaiHat() {
-return hinhBaiHat;
-}
+    public void setIDBaiHat(String iDBaiHat) {
+    this.iDBaiHat = iDBaiHat;
+    }
 
-public void setHinhBaiHat(String hinhBaiHat) {
-this.hinhBaiHat = hinhBaiHat;
-}
+    public String getTenBaiHat() {
+    return tenBaiHat;
+    }
 
+    public void setTenBaiHat(String tenBaiHat) {
+    this.tenBaiHat = tenBaiHat;
+    }
+
+    public String getHinhBaiHat() {
+    return hinhBaiHat;
+    }
+
+    public void setHinhBaiHat(String hinhBaiHat) {
+    this.hinhBaiHat = hinhBaiHat;
+    }
+
+    @Override
+    public String toString() {
+        return "QuangCao{" +
+                "iDQuangCao='" + iDQuangCao + '\'' +
+                ", hinhAnh='" + hinhAnh + '\'' +
+                ", noiDung='" + noiDung + '\'' +
+                ", iDBaiHat='" + iDBaiHat + '\'' +
+                ", tenBaiHat='" + tenBaiHat + '\'' +
+                ", hinhBaiHat='" + hinhBaiHat + '\'' +
+                '}';
+    }
 }

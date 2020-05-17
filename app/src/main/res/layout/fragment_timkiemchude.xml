@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridview_tkcd_chudes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchMode="columnWidth"
+    android:layout_column="2"
+    android:numColumns="2">
+
+
+</GridView>

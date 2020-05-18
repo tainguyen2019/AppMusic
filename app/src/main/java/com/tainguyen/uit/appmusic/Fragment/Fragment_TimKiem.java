@@ -42,7 +42,7 @@ public class Fragment_TimKiem extends Fragment {
 
     private Fragment_TimKiem_BaiHat fragment_timKiem_baiHat;
     private Fragment_TimKiem_Album fragment_timKiem_album;
-    private Fragment_TimKiem_ThuMuc fragment_timKiem_thuMuc;
+    private Fragment_TimKiem_TheLoai fragment_timKiem_theLoai;
     private Fragment_TimKiem_ChuDe fragment_timKiem_chuDe;
 
     @Nullable
@@ -66,12 +66,12 @@ public class Fragment_TimKiem extends Fragment {
 
         this.fragment_timKiem_baiHat = new Fragment_TimKiem_BaiHat();
         this.fragment_timKiem_album = new Fragment_TimKiem_Album();
-        this.fragment_timKiem_thuMuc = new Fragment_TimKiem_ThuMuc();
+        this.fragment_timKiem_theLoai = new Fragment_TimKiem_TheLoai();
         this.fragment_timKiem_chuDe = new Fragment_TimKiem_ChuDe();
 
         adapter.addFragment(this.fragment_timKiem_baiHat, "Bài hát");
         adapter.addFragment(this.fragment_timKiem_album, "Album");
-        adapter.addFragment(this.fragment_timKiem_thuMuc, "Thể loại");
+        adapter.addFragment(this.fragment_timKiem_theLoai, "Thể loại");
         adapter.addFragment(this.fragment_timKiem_chuDe, "Chủ đề");
         this.viewPager.setAdapter(adapter);
     }
@@ -236,10 +236,10 @@ public class Fragment_TimKiem extends Fragment {
             public void onResponse(Call<List<TimKiemTheLoai>> call, Response<List<TimKiemTheLoai>> response) {
                 ArrayList<TimKiemTheLoai> result = (ArrayList<TimKiemTheLoai>) response.body();
 
-                if (fragment_timKiem_thuMuc != null) {
-                    fragment_timKiem_thuMuc.getDataArrayList().clear();
-                    fragment_timKiem_thuMuc.getDataArrayList().addAll(result);
-                    fragment_timKiem_thuMuc.UpdateFragment();
+                if (fragment_timKiem_theLoai != null) {
+                    fragment_timKiem_theLoai.getDataArrayList().clear();
+                    fragment_timKiem_theLoai.getDataArrayList().addAll(result);
+                    fragment_timKiem_theLoai.UpdateFragment();
                 }
             }
 

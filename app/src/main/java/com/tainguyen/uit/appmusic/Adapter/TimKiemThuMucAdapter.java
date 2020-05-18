@@ -43,7 +43,7 @@ public class TimKiemThuMucAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TimKiemThuMucAdapter.ViewHolder holder;
         if (convertView == null) {
-            convertView = this.layoutInflater.inflate(R.layout.row_timkiemthumuc, null);
+            convertView = this.layoutInflater.inflate(R.layout.row_timkiemtheloai, null);
             holder = new TimKiemThuMucAdapter.ViewHolder();
             holder.tenTheloai = (TextView) convertView.findViewById(R.id.textView_tktm_tentheloai);
             holder.soBaiHat = (TextView) convertView.findViewById(R.id.textView_tktm_sobaihat);

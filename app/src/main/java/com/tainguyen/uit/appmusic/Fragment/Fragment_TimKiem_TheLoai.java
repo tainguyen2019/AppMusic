@@ -16,7 +16,7 @@ import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
 
-public class Fragment_TimKiem_ThuMuc extends Fragment {
+public class Fragment_TimKiem_TheLoai extends Fragment {
     private View view;
     private ArrayList<TimKiemTheLoai> dataArrayList = new ArrayList<>();
     private TimKiemThuMucAdapter adapter;
@@ -28,7 +28,7 @@ public class Fragment_TimKiem_ThuMuc extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.view = inflater.inflate(R.layout.fragment_timkiemthumuc, container, false);
+        this.view = inflater.inflate(R.layout.fragment_timkiemtheloai, container, false);
 
         this.initializeList();
         this.UpdateFragment();

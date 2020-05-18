@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/textView_ViewMore"
-        android:text="Xem thêm timKiemPlaylist"
+        android:text="Xem thêm playlist"
         android:textSize="20sp"
         android:drawablePadding="10dp"
         android:drawableLeft="@drawable/iconmoreplaylist"

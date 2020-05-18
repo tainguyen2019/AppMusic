@@ -4,18 +4,20 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TimKiemChuDe {
-    @SerializedName("IDChuDe")
+    @SerializedName("id")
     @Expose
     private String id;
 
-    @SerializedName("TenChuDe")
+    @SerializedName("name")
     @Expose
     private String name;
 
-    @SerializedName("HinhNen")
+    @SerializedName("hinhnen")
     @Expose
     private String hinhNen;
 
+    @SerializedName("sobaihat")
+    @Expose
     private Integer soBaiHat;
 
     public TimKiemChuDe() {

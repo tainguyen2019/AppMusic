@@ -1,6 +1,10 @@
 package com.tainguyen.uit.appmusic.Service;
 
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
+import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
+import com.tainguyen.uit.appmusic.Model.TimKiemNgheSi;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
+import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 
 import java.util.List;
 
@@ -25,7 +29,19 @@ public class TimKiemService {
 
     public interface ITimKiemService {
         @GET("timkiem.php")
-        Call<List<TimKiemAlbum>> getData(@Query("keyword") String keyword);
+        Call<List<TimKiemAlbum>> getAlbumData(@Query("keyword") String keyword, @Query("type") String type);
+
+        @GET("timkiem.php")
+        Call<List<TimKiemChuDe>> getChuDeData(@Query("keyword") String keyword, @Query("type") String type);
+
+        @GET("timkiem.php")
+        Call<List<TimKiemNgheSi>> getNgheSiData(@Query("keyword") String keyword, @Query("type") String type);
+
+        @GET("timkiem.php")
+        Call<List<TimKiemSong>> getSongData(@Query("keyword") String keyword, @Query("type") String type);
+
+        @GET("timkiem.php")
+        Call<List<TimKiemTheLoai>> getTheLoaiData(@Query("keyword") String keyword, @Query("type") String type);
     }
 
     //Menthods
@@ -34,6 +50,22 @@ public class TimKiemService {
     }
 
     public Call<List<TimKiemAlbum>> getTimkiemAlbumCallback(String keyword) {
-        return this.getService().getData(keyword);
+        return this.getService().getAlbumData(keyword, "album");
+    }
+
+    public Call<List<TimKiemChuDe>> getTimKiemChuDeCallback(String keyword) {
+        return this.getService().getChuDeData(keyword, "chude");
+    }
+
+    public Call<List<TimKiemNgheSi>> getTimKiemNgheSiCallback(String keyword) {
+        return this.getService().getNgheSiData(keyword, "nghesi");
+    }
+
+    public Call<List<TimKiemSong>> getTimKiemSongCallback(String keyword) {
+        return this.getService().getSongData(keyword, "song");
+    }
+
+    public Call<List<TimKiemTheLoai>> getTimKiemTheLoaiCallback(String keyword) {
+        return this.getService().getTheLoaiData(keyword, "theloai");
     }
 }

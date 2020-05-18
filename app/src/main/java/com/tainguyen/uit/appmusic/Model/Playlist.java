@@ -3,27 +3,27 @@ package com.tainguyen.uit.appmusic.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TimKiemPlaylist {
-    @SerializedName("IDPlaylist")
+public class Playlist {
+    @SerializedName("id")
     @Expose
     private String id;
 
-    @SerializedName("TenPlaylist")
+    @SerializedName("name")
     @Expose
     private String name;
 
-    @SerializedName("HinhNen")
+    @SerializedName("hinhnen")
     @Expose
     private String hinhNen;
 
-    public TimKiemPlaylist() {
+    public Playlist() {
     }
 
-    public TimKiemPlaylist(String id) {
+    public Playlist(String id) {
         this.id = id;
     }
 
-    public TimKiemPlaylist(String id, String name, String hinhNen) {
+    public Playlist(String id, String name, String hinhNen) {
         this.id = id;
         this.name = name;
         this.hinhNen = hinhNen;
@@ -55,7 +55,7 @@ public class TimKiemPlaylist {
 
     @Override
     public String toString() {
-        return "TimKiemPlaylist{" +
+        return "Playlist{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", hinhNen='" + hinhNen + '\'' +

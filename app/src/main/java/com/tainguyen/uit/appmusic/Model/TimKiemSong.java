@@ -4,27 +4,27 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TimKiemSong {
-    @SerializedName("IDBaiHat")
+    @SerializedName("id")
     @Expose
     private String id;
 
-    @SerializedName("TenBaiHat")
+    @SerializedName("name")
     @Expose
     private String name;
 
-    @SerializedName("CaSi")
+    @SerializedName("casi")
     @Expose
     private String caSi;
 
-    @SerializedName("HinhAnh")
+    @SerializedName("hinhanh")
     @Expose
     private String hinhAnh;
 
-    @SerializedName("LinkBaiHat")
+    @SerializedName("link")
     @Expose
     private String linkBaiHat;
 
-    @SerializedName("LuotNghe")
+    @SerializedName("luotnghe")
     @Expose
     private String luotNghe;
 

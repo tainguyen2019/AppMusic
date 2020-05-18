@@ -110,20 +110,31 @@ public class Fragment_TimKiem extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     final String keyword = edittext_keyword.getText().toString();
 
-                    TimKiemService.getInstance().getTimkiemAlbumCallback(keyword).enqueue(new Callback<List<TimKiemAlbum>>() {
-                        @Override
-                        public void onResponse(Call<List<TimKiemAlbum>> call, Response<List<TimKiemAlbum>> response) {
-                            ArrayList<TimKiemAlbum> result = (ArrayList<TimKiemAlbum>) response.body();
-
-                            fragment_timKiem_album.getDataArrayList().clear();
-                            fragment_timKiem_album.getDataArrayList().addAll(result);
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<TimKiemAlbum>> call, Throwable t) {
-                            Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
-                        }
-                    });
+                    int tabPosition = tabLayout.getSelectedTabPosition();
+                    switch (tabPosition) {
+                        case 0:
+                            //BaiHat
+                            SearchBaiHat(keyword);
+                            break;
+                        case 1:
+                            //NgheSi
+                            SearchNgheSi(keyword);
+                            break;
+                        case 2:
+                            //Album
+                            SearchAlbum(keyword);
+                            break;
+                        case 3:
+                            //ThuMuc
+                            SearchTheLoai(keyword);
+                            break;
+                        case 4:
+                            //ChuDe
+                            SearchChuDe(keyword);
+                            break;
+                        default:
+                            break;
+                    }
 
                     edittext_keyword.clearFocus();
 
@@ -152,6 +163,40 @@ public class Fragment_TimKiem extends Fragment {
                 edittext_keyword.clearFocus();
             }
         });
+    }
+
+    public void SearchBaiHat(String keyword) {
+        //
+    }
+
+    public void SearchNgheSi(String keyword) {
+        //
+    }
+
+    public void SearchAlbum(String keyword) {
+        TimKiemService.getInstance().getTimkiemAlbumCallback(keyword).enqueue(new Callback<List<TimKiemAlbum>>() {
+            @Override
+            public void onResponse(Call<List<TimKiemAlbum>> call, Response<List<TimKiemAlbum>> response) {
+                ArrayList<TimKiemAlbum> result = (ArrayList<TimKiemAlbum>) response.body();
+
+                fragment_timKiem_album.getDataArrayList().clear();
+                fragment_timKiem_album.getDataArrayList().addAll(result);
+                fragment_timKiem_album.UpdateFragment();
+            }
+
+            @Override
+            public void onFailure(Call<List<TimKiemAlbum>> call, Throwable t) {
+                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
+            }
+        });
+    }
+
+    public void SearchTheLoai(String keyword) {
+        //
+    }
+
+    public void SearchChuDe(String keyword) {
+        //
     }
 
     public void initializeEvents() {

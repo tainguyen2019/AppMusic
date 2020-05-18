@@ -1,15 +1,39 @@
 package com.tainguyen.uit.appmusic.Model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class TimKiemNgheSi {
+    @SerializedName("id")
+    @Expose
     private String id;
+
+    @SerializedName("name")
+    @Expose
     private String name;
 
+    @SerializedName("sobaihat")
+    @Expose
     private Integer soBaihat;
+
+    @SerializedName("soalbum")
+    @Expose
     private Integer soAlbum;
+
+    @SerializedName("sotheloai")
+    @Expose
     private Integer soTheloai;
+
+    @SerializedName("soluotnghe")
+    @Expose
     private Integer soLuotnghe;
+
+    @SerializedName("sochude")
+    @Expose
     private Integer soChude;
 
+    @SerializedName("hinhnen")
+    @Expose
     private String hinhnen;
 
     public TimKiemNgheSi() {

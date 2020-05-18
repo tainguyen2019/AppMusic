@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
-import com.tainguyen.uit.appmusic.Model.Song;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
 
 public class HotSongAdapter extends RecyclerView.Adapter<HotSongAdapter.ViewHolder> {
     Context context;
-    ArrayList<Song> songArrayList;
+    ArrayList<TimKiemSong> timKiemSongArrayList;
 
-    public HotSongAdapter(Context context, ArrayList<Song> songArrayList) {
+    public HotSongAdapter(Context context, ArrayList<TimKiemSong> timKiemSongArrayList) {
         this.context = context;
-        this.songArrayList = songArrayList;
+        this.timKiemSongArrayList = timKiemSongArrayList;
     }
 
     @NonNull
@@ -35,17 +35,17 @@ public class HotSongAdapter extends RecyclerView.Adapter<HotSongAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Song song = songArrayList.get(position);
-        holder.textViewHotSong.setText(song.getName());
-        holder.textViewCaSi.setText(song.getCaSi());
-        holder.textViewLuotNghe.setText(song.getLuotNghe() + " lượt nghe");
-        Picasso.with(context).load(song.getHinhAnh()).into(holder.imageViewHotSong);
+        TimKiemSong timKiemSong = timKiemSongArrayList.get(position);
+        holder.textViewHotSong.setText(timKiemSong.getName());
+        holder.textViewCaSi.setText(timKiemSong.getCaSi());
+        holder.textViewLuotNghe.setText(timKiemSong.getLuotNghe() + " lượt nghe");
+        Picasso.with(context).load(timKiemSong.getHinhAnh()).into(holder.imageViewHotSong);
 
     }
 
     @Override
     public int getItemCount() {
-        return songArrayList.size();
+        return timKiemSongArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

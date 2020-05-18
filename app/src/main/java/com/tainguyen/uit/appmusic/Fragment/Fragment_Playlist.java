@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.tainguyen.uit.appmusic.Adapter.PlaylistAdapter;
-import com.tainguyen.uit.appmusic.Model.Playlist;
+import com.tainguyen.uit.appmusic.Model.TimKiemPlaylist;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.APIService;
 import com.tainguyen.uit.appmusic.Service.IDataService;
@@ -30,7 +30,7 @@ public class Fragment_Playlist extends Fragment_Banner {
     View view;
     ListView listViewPlaylist;
     TextView textViewTitlePlayList, textView_ViewMore;
-    ArrayList<Playlist> playlists;
+    ArrayList<TimKiemPlaylist> timKiemPlaylists;
     PlaylistAdapter playlistAdapter;
     @Nullable
     @Override
@@ -45,18 +45,18 @@ public class Fragment_Playlist extends Fragment_Banner {
 
     private void getData(){
         IDataService dataService = APIService.getService();
-        Call<List<Playlist>> callback = dataService.GetPlaylistToday();
-        callback.enqueue(new Callback<List<Playlist>>() {
+        Call<List<TimKiemPlaylist>> callback = dataService.GetPlaylistToday();
+        callback.enqueue(new Callback<List<TimKiemPlaylist>>() {
             @Override
-            public void onResponse(Call<List<Playlist>> call, Response<List<Playlist>> response) {
-                playlists = (ArrayList<Playlist>) response.body();
-                playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_expandable_list_item_1, playlists);
+            public void onResponse(Call<List<TimKiemPlaylist>> call, Response<List<TimKiemPlaylist>> response) {
+                timKiemPlaylists = (ArrayList<TimKiemPlaylist>) response.body();
+                playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_expandable_list_item_1, timKiemPlaylists);
                 listViewPlaylist.setAdapter(playlistAdapter);
                 setListViewHeightBasedOnChildren(listViewPlaylist);
             }
 
             @Override
-            public void onFailure(Call<List<Playlist>> call, Throwable t) {
+            public void onFailure(Call<List<TimKiemPlaylist>> call, Throwable t) {
 
             }
         });

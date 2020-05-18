@@ -5,29 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.tainguyen.uit.appmusic.Adapter.TimKiemBaiHatAdapter;
-import com.tainguyen.uit.appmusic.Adapter.TimKiemNgheSiAdapter;
 import com.tainguyen.uit.appmusic.Adapter.TimKiemThuMucAdapter;
-import com.tainguyen.uit.appmusic.Model.NgheSi;
-import com.tainguyen.uit.appmusic.Model.Song;
-import com.tainguyen.uit.appmusic.Model.TheLoai;
+import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Fragment_TimKiem_ThuMuc extends Fragment {
     private View view;
-    private ArrayList<TheLoai> dataArrayList = new ArrayList<>();
+    private ArrayList<TimKiemTheLoai> dataArrayList = new ArrayList<>();
     private TimKiemThuMucAdapter adapter;
 
-    public ArrayList<TheLoai> getDataArrayList() {
+    public ArrayList<TimKiemTheLoai> getDataArrayList() {
         return dataArrayList;
     }
 

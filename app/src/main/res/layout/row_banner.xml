@@ -42,7 +42,7 @@
 
             <TextView
                 android:id="@+id/textViewContenBanner"
-                android:text="The best of song. See you again See you again See you again See you again"
+                android:text="The best of timKiemSong. See you again See you again See you again See you again"
                 android:maxLines="2"
                 android:textColor="#ffffff"
                 android:layout_marginRight="40dp"

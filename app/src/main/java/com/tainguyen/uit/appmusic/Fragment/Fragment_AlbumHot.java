@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tainguyen.uit.appmusic.Adapter.AlbumAdapter;
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.APIService;
 import com.tainguyen.uit.appmusic.Service.IDataService;
@@ -31,7 +31,7 @@ public class Fragment_AlbumHot extends Fragment {
     RecyclerView recyclerViewAlbum;
     TextView textView_ViewMore;
     AlbumAdapter albumAdapter;
-    ArrayList<Album> albumArrayList;
+    ArrayList<TimKiemAlbum> timKiemAlbumArrayList;
 
     @Nullable
     @Override
@@ -46,13 +46,13 @@ public class Fragment_AlbumHot extends Fragment {
 
     private void getData() {
         IDataService dataService = APIService.getService();
-        Call<List<Album>> callback = dataService.getAlbumToday();
+        Call<List<TimKiemAlbum>> callback = dataService.getAlbumToday();
 
-        callback.enqueue(new Callback<List<Album>>() {
+        callback.enqueue(new Callback<List<TimKiemAlbum>>() {
             @Override
-            public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
-                albumArrayList = (ArrayList<Album>) response.body();
-                albumAdapter = new AlbumAdapter(getActivity(), albumArrayList);
+            public void onResponse(Call<List<TimKiemAlbum>> call, Response<List<TimKiemAlbum>> response) {
+                timKiemAlbumArrayList = (ArrayList<TimKiemAlbum>) response.body();
+                albumAdapter = new AlbumAdapter(getActivity(), timKiemAlbumArrayList);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                 linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
                 recyclerViewAlbum.setLayoutManager(linearLayoutManager);
@@ -60,7 +60,7 @@ public class Fragment_AlbumHot extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Album>> call, Throwable t) {
+            public void onFailure(Call<List<TimKiemAlbum>> call, Throwable t) {
                 Log.d("BBB", t.getMessage());
             }
         });

@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.tainguyen.uit.appmusic.Model.Song;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
 public class TimKiemBaiHatAdapter extends BaseAdapter {
-    private List<Song> listData;
+    private List<TimKiemSong> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public TimKiemBaiHatAdapter(Context aContext,  List<Song> listData) {
+    public TimKiemBaiHatAdapter(Context aContext,  List<TimKiemSong> listData) {
         this.context = aContext;
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(aContext);
@@ -51,10 +51,10 @@ public class TimKiemBaiHatAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Song song = this.listData.get(position);
-        holder.tenBatHat.setText(song.getName());
-        holder.tenCaSi.setText(song.getCaSi());
-        holder.luotNghe.setText(song.getLuotNghe().toString());
+        TimKiemSong timKiemSong = this.listData.get(position);
+        holder.tenBatHat.setText(timKiemSong.getName());
+        holder.tenCaSi.setText(timKiemSong.getCaSi());
+        holder.luotNghe.setText(timKiemSong.getLuotNghe().toString());
 
         return convertView;
     }

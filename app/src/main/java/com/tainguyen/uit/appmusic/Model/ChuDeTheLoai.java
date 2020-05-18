@@ -5,35 +5,35 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ChuDeTheLoai {
-    @SerializedName("TheLoai")
+    @SerializedName("TimKiemTheLoai")
     @Expose
-    private List<TheLoai> theLoai = null;
+    private List<TimKiemTheLoai> timKiemTheLoai = null;
 
-    @SerializedName("ChuDe")
+    @SerializedName("TimKiemChuDe")
     @Expose
-    private List<ChuDe> chuDe = null;
+    private List<TimKiemChuDe> timKiemChuDe = null;
 
-    public List<TheLoai> getTheLoai() {
-    return theLoai;
+    public List<TimKiemTheLoai> getTimKiemTheLoai() {
+    return timKiemTheLoai;
     }
 
-    public void setTheLoai(List<TheLoai> theLoai) {
-    this.theLoai = theLoai;
+    public void setTimKiemTheLoai(List<TimKiemTheLoai> timKiemTheLoai) {
+    this.timKiemTheLoai = timKiemTheLoai;
     }
 
-    public List<ChuDe> getChuDe() {
-    return chuDe;
+    public List<TimKiemChuDe> getTimKiemChuDe() {
+    return timKiemChuDe;
     }
 
-    public void setChuDe(List<ChuDe> chuDe) {
-    this.chuDe = chuDe;
+    public void setTimKiemChuDe(List<TimKiemChuDe> timKiemChuDe) {
+    this.timKiemChuDe = timKiemChuDe;
     }
 
     @Override
     public String toString() {
         return "ChuDeTheLoai{" +
-                "theLoai=" + theLoai +
-                ", chuDe=" + chuDe +
+                "timKiemTheLoai=" + timKiemTheLoai +
+                ", timKiemChuDe=" + timKiemChuDe +
                 '}';
     }
 }

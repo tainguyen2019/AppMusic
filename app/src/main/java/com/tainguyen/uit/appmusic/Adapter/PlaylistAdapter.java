@@ -12,13 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
-import com.tainguyen.uit.appmusic.Model.Playlist;
+import com.tainguyen.uit.appmusic.Model.TimKiemPlaylist;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
-public class PlaylistAdapter extends ArrayAdapter<Playlist> {
-    public PlaylistAdapter(@NonNull Context context, int resource, @NonNull List<Playlist> objects) {
+public class PlaylistAdapter extends ArrayAdapter<TimKiemPlaylist> {
+    public PlaylistAdapter(@NonNull Context context, int resource, @NonNull List<TimKiemPlaylist> objects) {
         super(context, resource, objects);
     }
 
@@ -44,10 +44,10 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        Playlist playlist = this.getItem(position);
-        Picasso.with(this.getContext()).load(playlist.getHinhNen()).into(viewHolder.imageViewBackgroundPlaylist);
-        Picasso.with(this.getContext()).load(playlist.getHinhNen()).into(viewHolder.imageViewPlaylist);
-        viewHolder.textViewTenPlaylist.setText(playlist.getName());
+        TimKiemPlaylist timKiemPlaylist = this.getItem(position);
+        Picasso.with(this.getContext()).load(timKiemPlaylist.getHinhNen()).into(viewHolder.imageViewBackgroundPlaylist);
+        Picasso.with(this.getContext()).load(timKiemPlaylist.getHinhNen()).into(viewHolder.imageViewPlaylist);
+        viewHolder.textViewTenPlaylist.setText(timKiemPlaylist.getName());
 
 
         return convertView;

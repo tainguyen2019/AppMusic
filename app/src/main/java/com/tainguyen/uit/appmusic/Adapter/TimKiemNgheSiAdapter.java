@@ -8,17 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tainguyen.uit.appmusic.Model.NgheSi;
+import com.tainguyen.uit.appmusic.Model.TimKiemNgheSi;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
 public class TimKiemNgheSiAdapter extends BaseAdapter {
-    private List<NgheSi> listData;
+    private List<TimKiemNgheSi> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public TimKiemNgheSiAdapter(Context aContext,  List<NgheSi> listData) {
+    public TimKiemNgheSiAdapter(Context aContext,  List<TimKiemNgheSi> listData) {
         this.context = aContext;
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(aContext);
@@ -56,13 +56,13 @@ public class TimKiemNgheSiAdapter extends BaseAdapter {
             holder = (TimKiemNgheSiAdapter.ViewHolder) convertView.getTag();
         }
 
-        NgheSi ngheSi = this.listData.get(position);
-        holder.tenNgheSi.setText(ngheSi.getName());
-        holder.soBaiHat.setText(ngheSi.getSoBaihat().toString());
-        holder.soAlbum.setText(ngheSi.getSoAlbum().toString());
-        holder.soLuotNghe.setText(ngheSi.getSoLuotnghe().toString());
-        holder.soTheLoai.setText(ngheSi.getSoTheloai().toString());
-        holder.soChude.setText(ngheSi.getSoChude().toString());
+        TimKiemNgheSi timKiemNgheSi = this.listData.get(position);
+        holder.tenNgheSi.setText(timKiemNgheSi.getName());
+        holder.soBaiHat.setText(timKiemNgheSi.getSoBaihat().toString());
+        holder.soAlbum.setText(timKiemNgheSi.getSoAlbum().toString());
+        holder.soLuotNghe.setText(timKiemNgheSi.getSoLuotnghe().toString());
+        holder.soTheLoai.setText(timKiemNgheSi.getSoTheloai().toString());
+        holder.soChude.setText(timKiemNgheSi.getSoChude().toString());
         //holder.hinhnen.setImageBitmap(///);
 
         return convertView;

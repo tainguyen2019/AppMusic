@@ -18,7 +18,7 @@
     <TextView
         android:id="@+id/textViewAllAlbum"
         android:layout_below="@id/imageViewAllAlbum"
-        android:text="Tên album"
+        android:text="Tên timKiemAlbum"
         android:textColor="#000000"
         android:textSize="20sp"
         android:maxWidth="200dp"

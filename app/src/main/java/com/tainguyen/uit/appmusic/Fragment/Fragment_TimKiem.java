@@ -21,11 +21,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tainguyen.uit.appmusic.Adapter.TimkiemViewPagerAdapter;
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.TimKiemService;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +70,7 @@ public class Fragment_TimKiem extends Fragment {
 
         adapter.addFragment(this.fragment_timKiem_baiHat, "Bài hát");
         adapter.addFragment(this.fragment_timKiem_ngheSi, "Nghệ sĩ");
-        adapter.addFragment(this.fragment_timKiem_album, "Album");
+        adapter.addFragment(this.fragment_timKiem_album, "TimKiemAlbum");
         adapter.addFragment(this.fragment_timKiem_thuMuc, "Thể loại");
         adapter.addFragment(this.fragment_timKiem_chuDe, "Chủ đề");
         this.viewPager.setAdapter(adapter);
@@ -111,15 +110,18 @@ public class Fragment_TimKiem extends Fragment {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     final String keyword = edittext_keyword.getText().toString();
 
-                    TimKiemService.getInstance().getTimkiemAlbumCallback(keyword).enqueue(new Callback<List<Album>>() {
+                    TimKiemService.getInstance().getTimkiemAlbumCallback(keyword).enqueue(new Callback<List<TimKiemAlbum>>() {
                         @Override
-                        public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
-                            edittext_keyword.setText(((ArrayList<Album>) response.body()).toString());
+                        public void onResponse(Call<List<TimKiemAlbum>> call, Response<List<TimKiemAlbum>> response) {
+                            ArrayList<TimKiemAlbum> result = (ArrayList<TimKiemAlbum>) response.body();
+
+                            fragment_timKiem_album.getDataArrayList().clear();
+                            fragment_timKiem_album.getDataArrayList().addAll(result);
                         }
 
                         @Override
-                        public void onFailure(Call<List<Album>> call, Throwable t) {
-                            Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi, keyword: " + keyword, Toast.LENGTH_LONG);
+                        public void onFailure(Call<List<TimKiemAlbum>> call, Throwable t) {
+                            Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
                         }
                     });
 

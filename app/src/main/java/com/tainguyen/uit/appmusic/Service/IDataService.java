@@ -1,10 +1,10 @@
 package com.tainguyen.uit.appmusic.Service;
 
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.Model.ChuDeTheLoai;
-import com.tainguyen.uit.appmusic.Model.Playlist;
+import com.tainguyen.uit.appmusic.Model.TimKiemPlaylist;
 import com.tainguyen.uit.appmusic.Model.QuangCao;
-import com.tainguyen.uit.appmusic.Model.Song;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 
 import java.util.List;
 
@@ -16,14 +16,14 @@ public interface IDataService {
     Call<List<QuangCao>> GetDataBanner();
 
     @GET("getPlaylistToday.php")
-    Call<List<Playlist>> GetPlaylistToday();
+    Call<List<TimKiemPlaylist>> GetPlaylistToday();
 
     @GET("getChuDeTheLoaiToday.php")
     Call<ChuDeTheLoai> GetChuDeTheLoaiToday();
 
     @GET("getAlbumToday.php")
-    Call<List<Album>> getAlbumToday();
+    Call<List<TimKiemAlbum>> getAlbumToday();
 
     @GET("getHotSongs.php")
-    Call<List<Song>> getHotSongs();
+    Call<List<TimKiemSong>> getHotSongs();
 }

@@ -8,17 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tainguyen.uit.appmusic.Model.TheLoai;
+import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
 public class TimKiemThuMucAdapter extends BaseAdapter {
-    private List<TheLoai> listData;
+    private List<TimKiemTheLoai> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public TimKiemThuMucAdapter(Context aContext,  List<TheLoai> listData) {
+    public TimKiemThuMucAdapter(Context aContext,  List<TimKiemTheLoai> listData) {
         this.context = aContext;
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(aContext);
@@ -53,10 +53,10 @@ public class TimKiemThuMucAdapter extends BaseAdapter {
             holder = (TimKiemThuMucAdapter.ViewHolder) convertView.getTag();
         }
 
-        TheLoai theLoai = this.listData.get(position);
-        holder.tenTheloai.setText(theLoai.getName());
-        holder.soBaiHat.setText(theLoai.getSoBaiHat().toString());
-        holder.tenChuDe.setText(theLoai.getIdChude());
+        TimKiemTheLoai timKiemTheLoai = this.listData.get(position);
+        holder.tenTheloai.setText(timKiemTheLoai.getName());
+        holder.soBaiHat.setText(timKiemTheLoai.getSoBaiHat().toString());
+        holder.tenChuDe.setText(timKiemTheLoai.getIdChude());
         //holder.hinhnen.setImageBitmap(///);
 
         return convertView;

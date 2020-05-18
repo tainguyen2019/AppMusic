@@ -8,17 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
 public class TimKiemAlbumAdapter extends BaseAdapter {
-    private List<Album> listData;
+    private List<TimKiemAlbum> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public TimKiemAlbumAdapter(Context aContext,  List<Album> listData) {
+    public TimKiemAlbumAdapter(Context aContext,  List<TimKiemAlbum> listData) {
         this.context = aContext;
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(aContext);
@@ -53,10 +53,10 @@ public class TimKiemAlbumAdapter extends BaseAdapter {
             holder = (TimKiemAlbumAdapter.ViewHolder) convertView.getTag();
         }
 
-        Album album = this.listData.get(position);
-        holder.soBaihat.setText(album.getSoBaihat().toString());
-        holder.tenAlbum.setText(album.getName());
-        holder.tenCaSi.setText(album.getCaSi());
+        TimKiemAlbum timKiemAlbum = this.listData.get(position);
+        holder.soBaihat.setText(timKiemAlbum.getSoBaihat().toString());
+        holder.tenAlbum.setText(timKiemAlbum.getName());
+        holder.tenCaSi.setText(timKiemAlbum.getCaSi());
         //holder.hinhNenAlbum.setImageBitmap();
 
         return convertView;

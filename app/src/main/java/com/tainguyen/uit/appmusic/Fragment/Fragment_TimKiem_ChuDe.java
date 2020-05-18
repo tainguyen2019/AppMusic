@@ -5,27 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.tainguyen.uit.appmusic.Adapter.TimKiemBaiHatAdapter;
 import com.tainguyen.uit.appmusic.Adapter.TimKiemChuDeAdapter;
-import com.tainguyen.uit.appmusic.Model.ChuDe;
-import com.tainguyen.uit.appmusic.Model.Song;
+import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Fragment_TimKiem_ChuDe extends Fragment {
     private View view;
-    private ArrayList<ChuDe> dataArrayList = new ArrayList<>();
+    private ArrayList<TimKiemChuDe> dataArrayList = new ArrayList<>();
     private TimKiemChuDeAdapter adapter;
 
-    public ArrayList<ChuDe> getDataArrayList() {
+    public ArrayList<TimKiemChuDe> getDataArrayList() {
         return dataArrayList;
     }
 

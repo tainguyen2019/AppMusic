@@ -11,21 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.tainguyen.uit.appmusic.Adapter.TimKiemAlbumAdapter;
 import com.tainguyen.uit.appmusic.Adapter.TimKiemBaiHatAdapter;
-import com.tainguyen.uit.appmusic.Model.Album;
-import com.tainguyen.uit.appmusic.Model.Song;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Fragment_TimKiem_BaiHat extends Fragment {
     private View view;
-    private ArrayList<Song> dataArrayList = new ArrayList<>();
+    private ArrayList<TimKiemSong> dataArrayList = new ArrayList<>();
     private TimKiemBaiHatAdapter adapter;
 
-    public ArrayList<Song> getDataArrayList() {
+    public ArrayList<TimKiemSong> getDataArrayList() {
         return dataArrayList;
     }
 

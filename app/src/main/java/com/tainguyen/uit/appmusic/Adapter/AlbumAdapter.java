@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
     Context context;
-    ArrayList<Album> albumArrayList;
+    ArrayList<TimKiemAlbum> timKiemAlbumArrayList;
 
-    public AlbumAdapter(Context context, ArrayList<Album> albumArrayList) {
+    public AlbumAdapter(Context context, ArrayList<TimKiemAlbum> timKiemAlbumArrayList) {
         this.context = context;
-        this.albumArrayList = albumArrayList;
+        this.timKiemAlbumArrayList = timKiemAlbumArrayList;
     }
 
     @NonNull
@@ -36,15 +36,15 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Album album = albumArrayList.get(position);
-        holder.textViewTitleAlbum.setText(album.getName());
-        holder.textViewSinger.setText(album.getCaSi());
-        Picasso.with(context).load(album.getHinhNen()).into(holder.imageViewAlbum);
+        TimKiemAlbum timKiemAlbum = timKiemAlbumArrayList.get(position);
+        holder.textViewTitleAlbum.setText(timKiemAlbum.getName());
+        holder.textViewSinger.setText(timKiemAlbum.getCaSi());
+        Picasso.with(context).load(timKiemAlbum.getHinhNen()).into(holder.imageViewAlbum);
     }
 
     @Override
     public int getItemCount() {
-        return albumArrayList.size();
+        return timKiemAlbumArrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

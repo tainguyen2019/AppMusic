@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tainguyen.uit.appmusic.Adapter.HotSongAdapter;
-import com.tainguyen.uit.appmusic.Model.Song;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.APIService;
 import com.tainguyen.uit.appmusic.Service.IDataService;
@@ -30,7 +29,7 @@ public class Fragment_HotSong extends Fragment {
     View view;
     RecyclerView recyclerViewHotSong;
     HotSongAdapter hotSongAdapter;
-    ArrayList<Song> songArrayList;
+    ArrayList<TimKiemSong> timKiemSongArrayList;
 
     @Nullable
     @Override
@@ -43,13 +42,13 @@ public class Fragment_HotSong extends Fragment {
 
     private void getData() {
         IDataService dataService = APIService.getService();
-        Call<List<Song>> callback = dataService.getHotSongs();
+        Call<List<TimKiemSong>> callback = dataService.getHotSongs();
 
-        callback.enqueue(new Callback<List<Song>>() {
+        callback.enqueue(new Callback<List<TimKiemSong>>() {
             @Override
-            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
-                songArrayList = (ArrayList<Song>) response.body();
-                hotSongAdapter = new HotSongAdapter(getActivity(), songArrayList);
+            public void onResponse(Call<List<TimKiemSong>> call, Response<List<TimKiemSong>> response) {
+                timKiemSongArrayList = (ArrayList<TimKiemSong>) response.body();
+                hotSongAdapter = new HotSongAdapter(getActivity(), timKiemSongArrayList);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerViewHotSong.setLayoutManager(linearLayoutManager);
@@ -58,7 +57,7 @@ public class Fragment_HotSong extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Song>> call, Throwable t) {
+            public void onFailure(Call<List<TimKiemSong>> call, Throwable t) {
                 Log.d("BBB", t.getMessage());
             }
         });

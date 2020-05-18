@@ -1,13 +1,11 @@
 package com.tainguyen.uit.appmusic.Service;
 
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class TimKiemService {
@@ -27,7 +25,7 @@ public class TimKiemService {
 
     public interface ITimKiemService {
         @GET("timkiem.php")
-        Call<List<Album>> getData(@Query("keyword") String keyword);
+        Call<List<TimKiemAlbum>> getData(@Query("keyword") String keyword);
     }
 
     //Menthods
@@ -35,7 +33,7 @@ public class TimKiemService {
         return APIRetrofitClient.getClient(BASE_URL).create(ITimKiemService.class);
     }
 
-    public Call<List<Album>> getTimkiemAlbumCallback(String keyword) {
+    public Call<List<TimKiemAlbum>> getTimkiemAlbumCallback(String keyword) {
         return this.getService().getData(keyword);
     }
 }

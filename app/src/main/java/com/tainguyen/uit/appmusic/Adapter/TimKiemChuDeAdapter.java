@@ -8,17 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tainguyen.uit.appmusic.Model.ChuDe;
+import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
 public class TimKiemChuDeAdapter extends BaseAdapter {
-    private List<ChuDe> listData;
+    private List<TimKiemChuDe> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public TimKiemChuDeAdapter(Context aContext,  List<ChuDe> listData) {
+    public TimKiemChuDeAdapter(Context aContext,  List<TimKiemChuDe> listData) {
         this.context = aContext;
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(aContext);
@@ -52,9 +52,9 @@ public class TimKiemChuDeAdapter extends BaseAdapter {
             holder = (TimKiemChuDeAdapter.ViewHolder) convertView.getTag();
         }
 
-        ChuDe chuDe = this.listData.get(position);
-        holder.tenChude.setText(chuDe.getName());
-        holder.soBaiHat.setText(chuDe.getSoBaiHat().toString());
+        TimKiemChuDe timKiemChuDe = this.listData.get(position);
+        holder.tenChude.setText(timKiemChuDe.getName());
+        holder.soBaiHat.setText(timKiemChuDe.getSoBaiHat().toString());
         //holder.hinhnen.setImageBitmap(///);
 
         return convertView;

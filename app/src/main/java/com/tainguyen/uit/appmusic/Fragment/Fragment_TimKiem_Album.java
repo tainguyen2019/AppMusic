@@ -11,18 +11,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.tainguyen.uit.appmusic.Adapter.TimKiemAlbumAdapter;
-import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Fragment_TimKiem_Album extends Fragment {
     private View view;
-    private ArrayList<Album> dataArrayList = new ArrayList<>();
+    private ArrayList<TimKiemAlbum> dataArrayList = new ArrayList<>();
     private TimKiemAlbumAdapter adapter;
 
-    public ArrayList<Album> getDataArrayList() {
+    public ArrayList<TimKiemAlbum> getDataArrayList() {
         return dataArrayList;
     }
 

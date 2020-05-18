@@ -22,6 +22,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tainguyen.uit.appmusic.Adapter.TimkiemViewPagerAdapter;
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
+import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
+import com.tainguyen.uit.appmusic.Model.TimKiemNgheSi;
+import com.tainguyen.uit.appmusic.Model.TimKiemSong;
+import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.TimKiemService;
 
@@ -70,7 +74,7 @@ public class Fragment_TimKiem extends Fragment {
 
         adapter.addFragment(this.fragment_timKiem_baiHat, "Bài hát");
         adapter.addFragment(this.fragment_timKiem_ngheSi, "Nghệ sĩ");
-        adapter.addFragment(this.fragment_timKiem_album, "TimKiemAlbum");
+        adapter.addFragment(this.fragment_timKiem_album, "Album");
         adapter.addFragment(this.fragment_timKiem_thuMuc, "Thể loại");
         adapter.addFragment(this.fragment_timKiem_chuDe, "Chủ đề");
         this.viewPager.setAdapter(adapter);
@@ -108,35 +112,7 @@ public class Fragment_TimKiem extends Fragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    final String keyword = edittext_keyword.getText().toString();
-
-                    int tabPosition = tabLayout.getSelectedTabPosition();
-                    switch (tabPosition) {
-                        case 0:
-                            //BaiHat
-                            SearchBaiHat(keyword);
-                            break;
-                        case 1:
-                            //NgheSi
-                            SearchNgheSi(keyword);
-                            break;
-                        case 2:
-                            //Album
-                            SearchAlbum(keyword);
-                            break;
-                        case 3:
-                            //ThuMuc
-                            SearchTheLoai(keyword);
-                            break;
-                        case 4:
-                            //ChuDe
-                            SearchChuDe(keyword);
-                            break;
-                        default:
-                            break;
-                    }
-
-                    edittext_keyword.clearFocus();
+                    searchAction(null);
 
                     return true;
                 }
@@ -160,17 +136,102 @@ public class Fragment_TimKiem extends Fragment {
             @Override
             public void onClick(View v) {
                 edittext_keyword.setText(null);
+                searchAction(null);
                 edittext_keyword.clearFocus();
             }
         });
     }
 
+    public void initializeChangeTabEvent() {
+        this.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                searchAction(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                //
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                //
+            }
+        });
+    }
+
+    //Tìm kiếm dựa trên tab và nội dung
+    public void searchAction(Integer tabPosition) {
+        final TextInputEditText edittext_keyword = (TextInputEditText) this.view.findViewById(R.id.edittext_tk_keyword);
+        final String keyword = edittext_keyword.getText().toString();
+
+        if (tabPosition == null) {
+            tabPosition = this.tabLayout.getSelectedTabPosition();
+        }
+
+        switch (tabPosition) {
+            case 0:
+                //BaiHat
+                SearchBaiHat(keyword);
+                break;
+            case 1:
+                //NgheSi
+                SearchNgheSi(keyword);
+                break;
+            case 2:
+                //Album
+                SearchAlbum(keyword);
+                break;
+            case 3:
+                //ThuMuc
+                SearchTheLoai(keyword);
+                break;
+            case 4:
+                //ChuDe
+                SearchChuDe(keyword);
+                break;
+            default:
+                break;
+        }
+
+        edittext_keyword.clearFocus();
+    }
+
     public void SearchBaiHat(String keyword) {
-        //
+        TimKiemService.getInstance().getTimKiemSongCallback(keyword).enqueue(new Callback<List<TimKiemSong>>() {
+            @Override
+            public void onResponse(Call<List<TimKiemSong>> call, Response<List<TimKiemSong>> response) {
+                ArrayList<TimKiemSong> result = (ArrayList<TimKiemSong>) response.body();
+
+                fragment_timKiem_baiHat.getDataArrayList().clear();
+                fragment_timKiem_baiHat.getDataArrayList().addAll(result);
+                fragment_timKiem_baiHat.UpdateFragment();
+            }
+
+            @Override
+            public void onFailure(Call<List<TimKiemSong>> call, Throwable t) {
+                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
+            }
+        });
     }
 
     public void SearchNgheSi(String keyword) {
-        //
+        TimKiemService.getInstance().getTimKiemNgheSiCallback(keyword).enqueue(new Callback<List<TimKiemNgheSi>>() {
+            @Override
+            public void onResponse(Call<List<TimKiemNgheSi>> call, Response<List<TimKiemNgheSi>> response) {
+                ArrayList<TimKiemNgheSi> result = (ArrayList<TimKiemNgheSi>) response.body();
+
+                fragment_timKiem_ngheSi.getDataArrayList().clear();
+                fragment_timKiem_ngheSi.getDataArrayList().addAll(result);
+                fragment_timKiem_ngheSi.UpdateFragment();
+            }
+
+            @Override
+            public void onFailure(Call<List<TimKiemNgheSi>> call, Throwable t) {
+                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
+            }
+        });
     }
 
     public void SearchAlbum(String keyword) {
@@ -192,14 +253,43 @@ public class Fragment_TimKiem extends Fragment {
     }
 
     public void SearchTheLoai(String keyword) {
-        //
+        TimKiemService.getInstance().getTimKiemTheLoaiCallback(keyword).enqueue(new Callback<List<TimKiemTheLoai>>() {
+            @Override
+            public void onResponse(Call<List<TimKiemTheLoai>> call, Response<List<TimKiemTheLoai>> response) {
+                ArrayList<TimKiemTheLoai> result = (ArrayList<TimKiemTheLoai>) response.body();
+
+                fragment_timKiem_thuMuc.getDataArrayList().clear();
+                fragment_timKiem_thuMuc.getDataArrayList().addAll(result);
+                fragment_timKiem_thuMuc.UpdateFragment();
+            }
+
+            @Override
+            public void onFailure(Call<List<TimKiemTheLoai>> call, Throwable t) {
+                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
+            }
+        });
     }
 
     public void SearchChuDe(String keyword) {
-        //
+        TimKiemService.getInstance().getTimKiemChuDeCallback(keyword).enqueue(new Callback<List<TimKiemChuDe>>() {
+            @Override
+            public void onResponse(Call<List<TimKiemChuDe>> call, Response<List<TimKiemChuDe>> response) {
+                ArrayList<TimKiemChuDe> result = (ArrayList<TimKiemChuDe>) response.body();
+
+                fragment_timKiem_chuDe.getDataArrayList().clear();
+                fragment_timKiem_chuDe.getDataArrayList().addAll(result);
+                fragment_timKiem_chuDe.UpdateFragment();
+            }
+
+            @Override
+            public void onFailure(Call<List<TimKiemChuDe>> call, Throwable t) {
+                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
+            }
+        });
     }
 
     public void initializeEvents() {
         this.initializeKeywordAndButtonCancel();
+        this.initializeChangeTabEvent();
     }
 }

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tainguyen.uit.appmusic.Model.TimKiemNgheSi;
 import com.tainguyen.uit.appmusic.R;
 
@@ -63,7 +64,7 @@ public class TimKiemNgheSiAdapter extends BaseAdapter {
         holder.soLuotNghe.setText(timKiemNgheSi.getSoLuotnghe().toString());
         holder.soTheLoai.setText(timKiemNgheSi.getSoTheloai().toString());
         holder.soChude.setText(timKiemNgheSi.getSoChude().toString());
-        //holder.hinhnen.setImageBitmap(///);
+        //Picasso.with(context).load(timKiemNgheSi.getHinhnen()).into(holder.hinhnen);
 
         return convertView;
     }

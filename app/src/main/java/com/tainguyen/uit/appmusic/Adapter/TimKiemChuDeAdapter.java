@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
 import com.tainguyen.uit.appmusic.R;
 
@@ -55,7 +56,7 @@ public class TimKiemChuDeAdapter extends BaseAdapter {
         TimKiemChuDe timKiemChuDe = this.listData.get(position);
         holder.tenChude.setText(timKiemChuDe.getName());
         holder.soBaiHat.setText(timKiemChuDe.getSoBaiHat().toString());
-        //holder.hinhnen.setImageBitmap(///);
+        Picasso.with(context).load(timKiemChuDe.getHinhNen()).into(holder.hinhnen);
 
         return convertView;
     }

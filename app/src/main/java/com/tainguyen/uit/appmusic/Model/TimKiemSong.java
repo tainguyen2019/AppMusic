@@ -28,6 +28,14 @@ public class TimKiemSong {
     @Expose
     private String luotNghe;
 
+    @SerializedName("idAlbum")
+    @Expose
+    private String idAlbum;
+
+    @SerializedName("idTheloai")
+    @Expose
+    private String idTheloai;
+
     public TimKiemSong() {
     }
 
@@ -44,12 +52,23 @@ public class TimKiemSong {
         this.luotNghe = luotNghe;
     }
 
-    public String getIDBaiHat() {
+    public TimKiemSong(String id, String name, String caSi, String hinhAnh, String linkBaiHat, String luotNghe, String idAlbum, String idTheloai) {
+        this.id = id;
+        this.name = name;
+        this.caSi = caSi;
+        this.hinhAnh = hinhAnh;
+        this.linkBaiHat = linkBaiHat;
+        this.luotNghe = luotNghe;
+        this.idAlbum = idAlbum;
+        this.idTheloai = idTheloai;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setIDBaiHat(String iDBaiHat) {
-        this.id = iDBaiHat;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -92,15 +111,33 @@ public class TimKiemSong {
         this.luotNghe = luotNghe;
     }
 
+    public String getIdAlbum() {
+        return idAlbum;
+    }
+
+    public void setIdAlbum(String idAlbum) {
+        this.idAlbum = idAlbum;
+    }
+
+    public String getIdTheloai() {
+        return idTheloai;
+    }
+
+    public void setIdTheloai(String idTheloai) {
+        this.idTheloai = idTheloai;
+    }
+
     @Override
     public String toString() {
         return "TimKiemSong{" +
-                "iDBaiHat='" + id + '\'' +
-                ", tenBaiHat='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", caSi='" + caSi + '\'' +
                 ", hinhAnh='" + hinhAnh + '\'' +
                 ", linkBaiHat='" + linkBaiHat + '\'' +
                 ", luotNghe='" + luotNghe + '\'' +
+                ", idAlbum='" + idAlbum + '\'' +
+                ", idTheloai='" + idTheloai + '\'' +
                 '}';
     }
 }

@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 
@@ -57,7 +58,7 @@ public class TimKiemAlbumAdapter extends BaseAdapter {
         holder.soBaihat.setText(timKiemAlbum.getSoBaihat().toString());
         holder.tenAlbum.setText(timKiemAlbum.getName());
         holder.tenCaSi.setText(timKiemAlbum.getCaSi());
-        //holder.hinhNenAlbum.setImageBitmap();
+        Picasso.with(context).load(timKiemAlbum.getHinhNen()).into(holder.hinhNenAlbum);
 
         return convertView;
     }

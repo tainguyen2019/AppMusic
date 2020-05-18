@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:background="#4FFFFFFF"
             android:orientation="vertical">
 
             <TextView
@@ -35,7 +36,7 @@
                 android:layout_weight="0"
                 android:gravity="center_vertical"
                 android:text="Thể loại không xác định "
-                android:textColor="#80000000"
+                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -51,7 +52,7 @@
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="0"
-                    android:textColor="#80000000"
+                    android:textColor="#000000"
                     android:textSize="10sp" />
 
                 <TextView
@@ -60,7 +61,7 @@
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text=" bài hát"
-                    android:textColor="#80000000"
+                    android:textColor="#000000"
                     android:textSize="10sp" />
 
                 <Space
@@ -74,7 +75,7 @@
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="chủ đề:"
-                    android:textColor="#80000000"
+                    android:textColor="#000000"
                     android:textSize="10sp" />
 
                 <TextView
@@ -84,7 +85,7 @@
                     android:layout_weight="0"
                     android:gravity="center_vertical"
                     android:text="Tên chủ đề không xác định"
-                    android:textColor="#80000000"
+                    android:textColor="#000000"
                     android:textSize="10sp" />
 
             </LinearLayout>

@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:id="@+id/linearlayout_content"
-        android:layout_width="wrap_content"
+        android:layout_width="373dp"
         android:layout_height="45dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
@@ -28,8 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:background="#66FFFFFF"
+            android:ellipsize="end"
             android:gravity="center_vertical"
-            android:text="Tên bài hát không xác định"
+            android:text="Tên bài hát không xác định ffffffffffffffffffffffffffffffffffffffffffffffffffff"
             android:textSize="24sp" />
 
         <LinearLayout
@@ -93,6 +94,7 @@
         android:layout_height="45dp"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="0dp"
+        android:layout_weight="0"
         android:background="#00FFFFFF"
         android:text="⋮"
         android:textAllCaps="false"

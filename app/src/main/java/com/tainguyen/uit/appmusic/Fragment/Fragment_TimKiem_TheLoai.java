@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,13 +38,24 @@ public class Fragment_TimKiem_TheLoai extends Fragment {
     }
 
     public void initializeList() {
-        GridView gridView = (GridView) this.view.findViewById(R.id.gridview_tktm_thumucs);
+        GridView gridView = (GridView) this.view.findViewById(R.id.gridview_tktl_thumucs);
 
         this.adapter = new TimKiemThuMucAdapter(this.getContext(), this.dataArrayList);
         gridView.setAdapter(this.adapter);
     }
 
+    public void updateTextViewNoData() {
+        TextView textViewNoData = (TextView) this.view.findViewById(R.id.textView_tktl_nodata);
+        if (this.dataArrayList.size() < 1) {
+            textViewNoData.setVisibility(View.VISIBLE);
+        }
+        else {
+            textViewNoData.setVisibility(View.GONE);
+        }
+    }
+
     public void UpdateFragment() {
         this.adapter.notifyDataSetChanged();
+        this.updateTextViewNoData();
     }
 }

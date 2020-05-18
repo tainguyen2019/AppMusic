@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,7 +45,18 @@ public class Fragment_TimKiem_BaiHat extends Fragment {
         listView.setAdapter(this.adapter);
     }
 
+    public void updateTextViewNoData() {
+        TextView textViewNoData = (TextView) this.view.findViewById(R.id.textView_tkbh_nodata);
+        if (this.dataArrayList.size() < 1) {
+            textViewNoData.setVisibility(View.VISIBLE);
+        }
+        else {
+            textViewNoData.setVisibility(View.GONE);
+        }
+    }
+
     public void UpdateFragment() {
         this.adapter.notifyDataSetChanged();
+        this.updateTextViewNoData();
     }
 }

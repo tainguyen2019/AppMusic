@@ -58,6 +58,9 @@ public class Fragment_TimKiem extends Fragment {
 
         this.initializeEvents();
 
+        this.tabLayout.getTabAt(0).select();
+        this.searchAction(null);
+
         return view;
     }
 

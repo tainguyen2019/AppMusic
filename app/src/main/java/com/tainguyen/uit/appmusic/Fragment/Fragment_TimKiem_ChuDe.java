@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,7 +44,18 @@ public class Fragment_TimKiem_ChuDe extends Fragment {
         gridView.setAdapter(this.adapter);
     }
 
+    public void updateTextViewNoData() {
+        TextView textViewNoData = (TextView) this.view.findViewById(R.id.textView_tkcd_nodata);
+        if (this.dataArrayList.size() < 1) {
+            textViewNoData.setVisibility(View.VISIBLE);
+        }
+        else {
+            textViewNoData.setVisibility(View.GONE);
+        }
+    }
+
     public void UpdateFragment() {
         this.adapter.notifyDataSetChanged();
+        this.updateTextViewNoData();
     }
 }

@@ -2,7 +2,6 @@ package com.tainguyen.uit.appmusic.Service;
 
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
-import com.tainguyen.uit.appmusic.Model.TimKiemNgheSi;
 import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 
@@ -35,9 +34,6 @@ public class TimKiemService {
         Call<List<TimKiemChuDe>> getChuDeData(@Query("keyword") String keyword, @Query("type") String type);
 
         @GET("timkiem.php")
-        Call<List<TimKiemNgheSi>> getNgheSiData(@Query("keyword") String keyword, @Query("type") String type);
-
-        @GET("timkiem.php")
         Call<List<TimKiemSong>> getSongData(@Query("keyword") String keyword, @Query("type") String type);
 
         @GET("timkiem.php")
@@ -55,10 +51,6 @@ public class TimKiemService {
 
     public Call<List<TimKiemChuDe>> getTimKiemChuDeCallback(String keyword) {
         return this.getService().getChuDeData(keyword, "chude");
-    }
-
-    public Call<List<TimKiemNgheSi>> getTimKiemNgheSiCallback(String keyword) {
-        return this.getService().getNgheSiData(keyword, "nghesi");
     }
 
     public Call<List<TimKiemSong>> getTimKiemSongCallback(String keyword) {

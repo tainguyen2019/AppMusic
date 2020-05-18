@@ -24,20 +24,20 @@ if (isset($_GET["keyword"]) && isset($_GET["type"])) {
 			));
 			break;
 
-		case 'nghesi':
+		case 'song':
 			$searchResults = array_merge($searchResults, SearchTempate(
 				$keyword, 
-				"SELECT BAIHAT.CaSi AS 'name', COUNT(BAIHAT.IDBaiHat) AS 'sobaihat', COUNT(ALBUM.IDAlbum) AS 'soalbum', COUNT(THELOAI.IDTheLoai) AS 'sotheloai', SUM(BAIHAT.LuotNghe) AS 'soluotnghe', COUNT(CHUDE.IDChuDe) AS 'sochude' FROM BAIHAT JOIN ALBUM ON ALBUM.IDAlbum = BAIHAT.IDAlbum JOIN THELOAI ON THELOAI.IDTheLoai = BAIHAT.IDTheLoai JOIN CHUDE ON CHUDE.IDChuDe = THELOAI.IDChuDe WHERE BAIHAT.CaSi LIKE '%$keyword%' GROUP BY BAIHAT.CaSi ", 
-				"convertArrayToCaSi"
+				"SELECT BAIHAT.* FROM BAIHAT WHERE BAIHAT.TenBaiHat LIKE '%$keyword%'", 
+				"convertArrayToBaiHat"
 			));
 			break;
 
-		case 'song':
-			//
-			break;
-
 		case 'theloai':
-			//
+			$searchResults = array_merge($searchResults, SearchTempate(
+				$keyword, 
+				"SELECT THELOAI.*, COUNT(BAIHAT.IDBaiHat) AS 'sobaihat' FROM THELOAI JOIN BAIHAT ON BAIHAT.IDTheLoai = THELOAI.IDTheLoai WHERE THELOAI.TenTheLoai LIKE '%$keyword%' GROUP BY THELOAI.IDTheLoai ", 
+				"convertArrayToTheLoai"
+			));
 			break;
 		
 		default:
@@ -92,17 +92,28 @@ function convertArrayToChuDe($queryResult)
 	];
 }
 
-function convertArrayToCaSi($queryResult)
+function convertArrayToBaiHat($queryResult)
 {
 	return (object) [
-		"id" => "",
-		"name" => $queryResult["name"],
-		"sobaihat" => $queryResult["sobaihat"],
-		"soalbum" => $queryResult["soalbum"],
-		"sotheloai" => $queryResult["sotheloai"],
-		"soluotnghe" => $queryResult["soluotnghe"],
-		"sochude" => $queryResult["sochude"],
-		"hinhnen" => ""
+		"id" =>  $queryResult["IDBaiHat"],
+		"name" => $queryResult["TenBaiHat"],
+		"casi" => $queryResult["CaSi"],
+		"hinhanh" => $queryResult["HinhBaiHat"],
+		"link" => $queryResult["LinkBaiHat"],
+		"luotnghe" => $queryResult["LuotNghe"],
+		"idAlbum" => $queryResult["IDAlbum"],
+		"luotnghe" => $queryResult["IDTheLoai"]
+	];
+}
+
+function convertArrayToTheLoai($queryResult)
+{
+	return (object) [
+		"id" =>  $queryResult["IDTheLoai"],
+		"ichude" => $queryResult["IDChuDe"],
+		"name" => $queryResult["TenTheLoai"],
+		"hinhnen" => $queryResult["HinhNen"],
+		"sobaihat" => $queryResult["sobaihat"]
 	];
 }
 

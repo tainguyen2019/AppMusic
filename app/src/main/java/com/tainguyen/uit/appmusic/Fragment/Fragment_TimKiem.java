@@ -23,7 +23,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.tainguyen.uit.appmusic.Adapter.TimkiemViewPagerAdapter;
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
-import com.tainguyen.uit.appmusic.Model.TimKiemNgheSi;
 import com.tainguyen.uit.appmusic.Model.TimKiemSong;
 import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 import com.tainguyen.uit.appmusic.R;
@@ -42,7 +41,6 @@ public class Fragment_TimKiem extends Fragment {
     private ViewPager viewPager;
 
     private Fragment_TimKiem_BaiHat fragment_timKiem_baiHat;
-    private Fragment_TimKiem_NgheSi fragment_timKiem_ngheSi;
     private Fragment_TimKiem_Album fragment_timKiem_album;
     private Fragment_TimKiem_ThuMuc fragment_timKiem_thuMuc;
     private Fragment_TimKiem_ChuDe fragment_timKiem_chuDe;
@@ -68,12 +66,10 @@ public class Fragment_TimKiem extends Fragment {
 
         this.fragment_timKiem_baiHat = new Fragment_TimKiem_BaiHat();
         this.fragment_timKiem_album = new Fragment_TimKiem_Album();
-        this.fragment_timKiem_ngheSi = new Fragment_TimKiem_NgheSi();
         this.fragment_timKiem_thuMuc = new Fragment_TimKiem_ThuMuc();
         this.fragment_timKiem_chuDe = new Fragment_TimKiem_ChuDe();
 
         adapter.addFragment(this.fragment_timKiem_baiHat, "Bài hát");
-        adapter.addFragment(this.fragment_timKiem_ngheSi, "Nghệ sĩ");
         adapter.addFragment(this.fragment_timKiem_album, "Album");
         adapter.addFragment(this.fragment_timKiem_thuMuc, "Thể loại");
         adapter.addFragment(this.fragment_timKiem_chuDe, "Chủ đề");
@@ -176,18 +172,14 @@ public class Fragment_TimKiem extends Fragment {
                 SearchBaiHat(keyword);
                 break;
             case 1:
-                //NgheSi
-                SearchNgheSi(keyword);
-                break;
-            case 2:
                 //Album
                 SearchAlbum(keyword);
                 break;
-            case 3:
+            case 2:
                 //ThuMuc
                 SearchTheLoai(keyword);
                 break;
-            case 4:
+            case 3:
                 //ChuDe
                 SearchChuDe(keyword);
                 break;
@@ -204,31 +196,15 @@ public class Fragment_TimKiem extends Fragment {
             public void onResponse(Call<List<TimKiemSong>> call, Response<List<TimKiemSong>> response) {
                 ArrayList<TimKiemSong> result = (ArrayList<TimKiemSong>) response.body();
 
-                fragment_timKiem_baiHat.getDataArrayList().clear();
-                fragment_timKiem_baiHat.getDataArrayList().addAll(result);
-                fragment_timKiem_baiHat.UpdateFragment();
+                if (fragment_timKiem_baiHat != null) {
+                    fragment_timKiem_baiHat.getDataArrayList().clear();
+                    fragment_timKiem_baiHat.getDataArrayList().addAll(result);
+                    fragment_timKiem_baiHat.UpdateFragment();
+                }
             }
 
             @Override
             public void onFailure(Call<List<TimKiemSong>> call, Throwable t) {
-                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
-            }
-        });
-    }
-
-    public void SearchNgheSi(String keyword) {
-        TimKiemService.getInstance().getTimKiemNgheSiCallback(keyword).enqueue(new Callback<List<TimKiemNgheSi>>() {
-            @Override
-            public void onResponse(Call<List<TimKiemNgheSi>> call, Response<List<TimKiemNgheSi>> response) {
-                ArrayList<TimKiemNgheSi> result = (ArrayList<TimKiemNgheSi>) response.body();
-
-                fragment_timKiem_ngheSi.getDataArrayList().clear();
-                fragment_timKiem_ngheSi.getDataArrayList().addAll(result);
-                fragment_timKiem_ngheSi.UpdateFragment();
-            }
-
-            @Override
-            public void onFailure(Call<List<TimKiemNgheSi>> call, Throwable t) {
                 Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
             }
         });
@@ -240,9 +216,11 @@ public class Fragment_TimKiem extends Fragment {
             public void onResponse(Call<List<TimKiemAlbum>> call, Response<List<TimKiemAlbum>> response) {
                 ArrayList<TimKiemAlbum> result = (ArrayList<TimKiemAlbum>) response.body();
 
-                fragment_timKiem_album.getDataArrayList().clear();
-                fragment_timKiem_album.getDataArrayList().addAll(result);
-                fragment_timKiem_album.UpdateFragment();
+                if (fragment_timKiem_album != null) {
+                    fragment_timKiem_album.getDataArrayList().clear();
+                    fragment_timKiem_album.getDataArrayList().addAll(result);
+                    fragment_timKiem_album.UpdateFragment();
+                }
             }
 
             @Override
@@ -258,9 +236,11 @@ public class Fragment_TimKiem extends Fragment {
             public void onResponse(Call<List<TimKiemTheLoai>> call, Response<List<TimKiemTheLoai>> response) {
                 ArrayList<TimKiemTheLoai> result = (ArrayList<TimKiemTheLoai>) response.body();
 
-                fragment_timKiem_thuMuc.getDataArrayList().clear();
-                fragment_timKiem_thuMuc.getDataArrayList().addAll(result);
-                fragment_timKiem_thuMuc.UpdateFragment();
+                if (fragment_timKiem_thuMuc != null) {
+                    fragment_timKiem_thuMuc.getDataArrayList().clear();
+                    fragment_timKiem_thuMuc.getDataArrayList().addAll(result);
+                    fragment_timKiem_thuMuc.UpdateFragment();
+                }
             }
 
             @Override
@@ -276,9 +256,11 @@ public class Fragment_TimKiem extends Fragment {
             public void onResponse(Call<List<TimKiemChuDe>> call, Response<List<TimKiemChuDe>> response) {
                 ArrayList<TimKiemChuDe> result = (ArrayList<TimKiemChuDe>) response.body();
 
-                fragment_timKiem_chuDe.getDataArrayList().clear();
-                fragment_timKiem_chuDe.getDataArrayList().addAll(result);
-                fragment_timKiem_chuDe.UpdateFragment();
+                if (fragment_timKiem_chuDe != null) {
+                    fragment_timKiem_chuDe.getDataArrayList().clear();
+                    fragment_timKiem_chuDe.getDataArrayList().addAll(result);
+                    fragment_timKiem_chuDe.UpdateFragment();
+                }
             }
 
             @Override

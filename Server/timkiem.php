@@ -94,7 +94,7 @@ function convertArrayToChuDe($queryResult)
 
 function convertArrayToBaiHat($queryResult)
 {
-	$returnObject = (object) [
+	return (object) [
 		"id" =>  $queryResult["IDBaiHat"],
 		"name" => $queryResult["TenBaiHat"],
 		"casi" => $queryResult["CaSi"],
@@ -102,10 +102,7 @@ function convertArrayToBaiHat($queryResult)
 		"link" => $queryResult["LinkBaiHat"],
 		"luotnghe" => $queryResult["LuotNghe"],
 		"idAlbum" => $queryResult["IDAlbum"]
-		//"luotnghe" => $queryResult["IDTheLoai"]
 	];
-
-	return $returnObject;
 }
 
 function convertArrayToTheLoai($queryResult)

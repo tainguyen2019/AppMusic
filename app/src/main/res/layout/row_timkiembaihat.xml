@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="5dp">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textview_tkbh_tenbaihat"
+            android:textSize="20sp"
+            android:text="Ten bai hat"
+            android:textColor="#000000"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxLength="25"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textview_tkbh_nghesi"
+            android:text="CA SI"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#9C9191"
+            android:layout_below="@id/textview_tkbh_tenbaihat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/imageViewLuotNghe"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/icon_headphone" />
+
+        <TextView
+            android:id="@+id/textview_tkbh_luotnghe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageViewLuotNghe"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:text="1234 luot nghe" />
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -94,6 +94,8 @@ public class ListSongActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongActivity.this, songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+
+                handleEvenClick();
             }
 
             @Override
@@ -114,6 +116,8 @@ public class ListSongActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongActivity.this, songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+
+                handleEvenClick();
             }
 
             @Override
@@ -134,6 +138,8 @@ public class ListSongActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongActivity.this, songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+
+                handleEvenClick();
             }
 
             @Override
@@ -173,6 +179,8 @@ public class ListSongActivity extends AppCompatActivity {
                 listSongAdapter = new ListSongAdapter(ListSongActivity.this, songArrayList);
                 recyclerViewListSong.setLayoutManager(new LinearLayoutManager(ListSongActivity.this));
                 recyclerViewListSong.setAdapter(listSongAdapter);
+
+                handleEvenClick();
             }
 
             @Override
@@ -194,6 +202,8 @@ public class ListSongActivity extends AppCompatActivity {
 
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+
+        floatingActionButton.setEnabled(false);
     }
 
     private void AnhXa() {
@@ -221,5 +231,18 @@ public class ListSongActivity extends AppCompatActivity {
                 album = (Album) intent.getSerializableExtra("item_album");
             }
         }
+    }
+
+    private void handleEvenClick(){
+        floatingActionButton.setEnabled(true);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListSongActivity.this, PlayNhacActivity.class);
+                intent.putExtra("BaiHat", songArrayList);
+
+                startActivity(intent);
+            }
+        });
     }
 }

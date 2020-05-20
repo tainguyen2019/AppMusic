@@ -1,6 +1,7 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
+import com.tainguyen.uit.appmusic.Activity.ListTheLoaiActivity;
+import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.ChuDe;
 import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
 import com.tainguyen.uit.appmusic.R;
 
@@ -53,10 +58,21 @@ public class TimKiemChuDeAdapter extends BaseAdapter {
             holder = (TimKiemChuDeAdapter.ViewHolder) convertView.getTag();
         }
 
-        TimKiemChuDe timKiemChuDe = this.listData.get(position);
+        final TimKiemChuDe timKiemChuDe = this.listData.get(position);
         holder.tenChude.setText(timKiemChuDe.getName());
         holder.soBaiHat.setText(timKiemChuDe.getSoBaiHat().toString() + " bài hát");
         Picasso.with(context).load(timKiemChuDe.getHinhNen()).into(holder.hinhnen);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context, ListTheLoaiActivity.class);
+                intent.putExtra("item_chude", new ChuDe(timKiemChuDe.getId(), timKiemChuDe.getName()
+                                                                , timKiemChuDe.getHinhNen()));
+
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

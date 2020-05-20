@@ -17,7 +17,13 @@ private String tenChuDe;
 @Expose
 private String hinhNen;
 
-public String getIDChuDe() {
+    public ChuDe(String iDChuDe, String tenChuDe, String hinhNen) {
+        this.iDChuDe = iDChuDe;
+        this.tenChuDe = tenChuDe;
+        this.hinhNen = hinhNen;
+    }
+
+    public String getIDChuDe() {
 return iDChuDe;
 }
 

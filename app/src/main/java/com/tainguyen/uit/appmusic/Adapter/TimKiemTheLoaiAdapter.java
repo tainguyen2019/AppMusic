@@ -1,6 +1,7 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
+import com.tainguyen.uit.appmusic.Model.Album;
+import com.tainguyen.uit.appmusic.Model.TheLoai;
 import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 import com.tainguyen.uit.appmusic.R;
 
@@ -53,10 +57,21 @@ public class TimKiemTheLoaiAdapter extends BaseAdapter {
             holder = (TimKiemTheLoaiAdapter.ViewHolder) convertView.getTag();
         }
 
-        TimKiemTheLoai timKiemTheLoai = this.listData.get(position);
+        final TimKiemTheLoai timKiemTheLoai = this.listData.get(position);
         holder.tenTheloai.setText(timKiemTheLoai.getName());
         holder.soBaiHat.setText(timKiemTheLoai.getSoBaiHat().toString() + " bài hát");
         Picasso.with(context).load(timKiemTheLoai.getHinhNen()).into(holder.hinhnen);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context, ListSongActivity.class);
+                intent.putExtra("item_theloai", new TheLoai(timKiemTheLoai.getId(), timKiemTheLoai.getIdChude()
+                                                                    , timKiemTheLoai.getName(), timKiemTheLoai.getHinhNen()));
+
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

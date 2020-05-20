@@ -1,8 +1,9 @@
 package com.tainguyen.uit.appmusic.Service;
 
+import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
-import com.tainguyen.uit.appmusic.Model.TimKiemSong;
+import com.tainguyen.uit.appmusic.Model.TimKiemPlaylist;
 import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 
 import java.util.List;
@@ -34,10 +35,13 @@ public class TimKiemService {
         Call<List<TimKiemChuDe>> getChuDeData(@Query("keyword") String keyword, @Query("type") String type);
 
         @GET("timkiem.php")
-        Call<List<TimKiemSong>> getSongData(@Query("keyword") String keyword, @Query("type") String type);
+        Call<List<Song>> getSongData(@Query("keyword") String keyword, @Query("type") String type);
 
         @GET("timkiem.php")
         Call<List<TimKiemTheLoai>> getTheLoaiData(@Query("keyword") String keyword, @Query("type") String type);
+
+        @GET("timkiem.php")
+        Call<List<TimKiemPlaylist>> getPlaylistData(@Query("keyword") String keyword, @Query("type") String type);
     }
 
     //Menthods
@@ -53,11 +57,15 @@ public class TimKiemService {
         return this.getService().getChuDeData(keyword, "chude");
     }
 
-    public Call<List<TimKiemSong>> getTimKiemSongCallback(String keyword) {
+    public Call<List<Song>> getTimKiemSongCallback(String keyword) {
         return this.getService().getSongData(keyword, "song");
     }
 
     public Call<List<TimKiemTheLoai>> getTimKiemTheLoaiCallback(String keyword) {
         return this.getService().getTheLoaiData(keyword, "theloai");
+    }
+
+    public Call<List<TimKiemPlaylist>> getTimKiemPlaylistCallback(String keyword) {
+        return this.getService().getPlaylistData(keyword, "playlist");
     }
 }

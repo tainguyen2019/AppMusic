@@ -18,6 +18,7 @@
         <activity android:name=".Activity.AllChuDeActivity" />
         <activity android:name=".Activity.AllPlaylistActivity" />
         <activity android:name=".Activity.ListSongActivity" />
+        <activity android:name=".Activity.PlayNhacActivity"/>
         <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

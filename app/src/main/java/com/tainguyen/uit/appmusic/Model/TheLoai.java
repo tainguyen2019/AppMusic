@@ -7,49 +7,56 @@ import java.io.Serializable;
 
 public class TheLoai implements Serializable {
 
-@SerializedName("IDTheLoai")
-@Expose
-private String iDTheLoai;
-@SerializedName("IDChuDe")
-@Expose
-private String iDChuDe;
-@SerializedName("TenTheLoai")
-@Expose
-private String tenTheLoai;
-@SerializedName("HinhNen")
-@Expose
-private String hinhNen;
+    @SerializedName("IDTheLoai")
+    @Expose
+    private String iDTheLoai;
+    @SerializedName("IDChuDe")
+    @Expose
+    private String iDChuDe;
+    @SerializedName("TenTheLoai")
+    @Expose
+    private String tenTheLoai;
+    @SerializedName("HinhNen")
+    @Expose
+    private String hinhNen;
 
-public String getIDTheLoai() {
-return iDTheLoai;
-}
+    public TheLoai(String iDTheLoai, String iDChuDe, String tenTheLoai, String hinhNen) {
+        this.iDTheLoai = iDTheLoai;
+        this.iDChuDe = iDChuDe;
+        this.tenTheLoai = tenTheLoai;
+        this.hinhNen = hinhNen;
+    }
 
-public void setIDTheLoai(String iDTheLoai) {
-this.iDTheLoai = iDTheLoai;
-}
+    public String getIDTheLoai() {
+        return iDTheLoai;
+    }
 
-public String getIDChuDe() {
-return iDChuDe;
-}
+    public void setIDTheLoai(String iDTheLoai) {
+        this.iDTheLoai = iDTheLoai;
+    }
 
-public void setIDChuDe(String iDChuDe) {
-this.iDChuDe = iDChuDe;
-}
+    public String getIDChuDe() {
+        return iDChuDe;
+    }
 
-public String getTenTheLoai() {
-return tenTheLoai;
-}
+    public void setIDChuDe(String iDChuDe) {
+        this.iDChuDe = iDChuDe;
+    }
 
-public void setTenTheLoai(String tenTheLoai) {
-this.tenTheLoai = tenTheLoai;
-}
+    public String getTenTheLoai() {
+        return tenTheLoai;
+    }
 
-public String getHinhNen() {
-return hinhNen;
-}
+    public void setTenTheLoai(String tenTheLoai) {
+        this.tenTheLoai = tenTheLoai;
+    }
 
-public void setHinhNen(String hinhNen) {
-this.hinhNen = hinhNen;
-}
+    public String getHinhNen() {
+        return hinhNen;
+    }
+
+    public void setHinhNen(String hinhNen) {
+        this.hinhNen = hinhNen;
+    }
 
 }

@@ -1,23 +1,25 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.tainguyen.uit.appmusic.Model.TimKiemSong;
+import com.tainguyen.uit.appmusic.Activity.PlayNhacActivity;
+import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.R;
 
 import java.util.List;
 
 public class TimKiemBaiHatAdapter extends BaseAdapter {
-    private List<TimKiemSong> listData;
+    private List<Song> listData;
     private LayoutInflater layoutInflater;
     private Context context;
 
-    public TimKiemBaiHatAdapter(Context aContext,  List<TimKiemSong> listData) {
+    public TimKiemBaiHatAdapter(Context aContext,  List<Song> listData) {
         this.context = aContext;
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(aContext);
@@ -51,10 +53,20 @@ public class TimKiemBaiHatAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        TimKiemSong timKiemSong = this.listData.get(position);
-        holder.tenBatHat.setText(timKiemSong.getName());
-        holder.tenCaSi.setText(timKiemSong.getCaSi());
-        holder.luotNghe.setText(timKiemSong.getLuotNghe() + " lượt nghe");
+        final Song song = this.listData.get(position);
+        holder.tenBatHat.setText(song.getTenBaiHat());
+        holder.tenCaSi.setText(song.getCaSi());
+        holder.luotNghe.setText(song.getLuotNghe() + " lượt nghe");
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PlayNhacActivity.class);
+                intent.putExtra("item_song", song);
+
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

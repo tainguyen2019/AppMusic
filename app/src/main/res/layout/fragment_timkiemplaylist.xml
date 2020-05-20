@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+<GridView
+    android:id="@+id/gridview_tkpl_playlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchMode="columnWidth"
+    android:layout_marginTop="3dp"
+    android:horizontalSpacing="16dp"
+    android:verticalSpacing="16dp"
+    android:layout_column="2"
+    android:numColumns="2">
+</GridView>
+
+    <TextView
+        android:id="@+id/textView_tkpl_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Không có dữ liệu"
+        android:visibility="gone"/>
+
+</FrameLayout>

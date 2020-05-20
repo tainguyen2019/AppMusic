@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +22,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.tainguyen.uit.appmusic.Adapter.TimkiemViewPagerAdapter;
+import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.Model.TimKiemChuDe;
-import com.tainguyen.uit.appmusic.Model.TimKiemSong;
+import com.tainguyen.uit.appmusic.Model.TimKiemPlaylist;
 import com.tainguyen.uit.appmusic.Model.TimKiemTheLoai;
 import com.tainguyen.uit.appmusic.R;
 import com.tainguyen.uit.appmusic.Service.TimKiemService;
@@ -43,6 +45,7 @@ public class Fragment_TimKiem extends Fragment {
     private Fragment_TimKiem_BaiHat fragment_timKiem_baiHat;
     private Fragment_TimKiem_Album fragment_timKiem_album;
     private Fragment_TimKiem_TheLoai fragment_timKiem_theLoai;
+    private Fragment_TimKiem_Playlist fragment_timKiem_playlist;
     private Fragment_TimKiem_ChuDe fragment_timKiem_chuDe;
 
     @Nullable
@@ -70,11 +73,13 @@ public class Fragment_TimKiem extends Fragment {
         this.fragment_timKiem_baiHat = new Fragment_TimKiem_BaiHat();
         this.fragment_timKiem_album = new Fragment_TimKiem_Album();
         this.fragment_timKiem_theLoai = new Fragment_TimKiem_TheLoai();
+        this.fragment_timKiem_playlist = new Fragment_TimKiem_Playlist();
         this.fragment_timKiem_chuDe = new Fragment_TimKiem_ChuDe();
 
         adapter.addFragment(this.fragment_timKiem_baiHat, "Bài hát");
         adapter.addFragment(this.fragment_timKiem_album, "Album");
         adapter.addFragment(this.fragment_timKiem_theLoai, "Thể loại");
+        adapter.addFragment(this.fragment_timKiem_playlist, "Playlist");
         adapter.addFragment(this.fragment_timKiem_chuDe, "Chủ đề");
         this.viewPager.setAdapter(adapter);
     }
@@ -180,10 +185,13 @@ public class Fragment_TimKiem extends Fragment {
                     SearchAlbum(keyword);
                     break;
                 case 2:
-                    //ThuMuc
+                    //The Loai
                     SearchTheLoai(keyword);
                     break;
                 case 3:
+                    //Playlist
+                    SearchPlaylist(keyword);
+                case 4:
                     //ChuDe
                     SearchChuDe(keyword);
                     break;
@@ -196,10 +204,10 @@ public class Fragment_TimKiem extends Fragment {
     }
 
     public void SearchBaiHat(String keyword) {
-        TimKiemService.getInstance().getTimKiemSongCallback(keyword).enqueue(new Callback<List<TimKiemSong>>() {
+        TimKiemService.getInstance().getTimKiemSongCallback(keyword).enqueue(new Callback<List<Song>>() {
             @Override
-            public void onResponse(Call<List<TimKiemSong>> call, Response<List<TimKiemSong>> response) {
-                ArrayList<TimKiemSong> result = (ArrayList<TimKiemSong>) response.body();
+            public void onResponse(Call<List<Song>> call, Response<List<Song>> response) {
+                ArrayList<Song> result = (ArrayList<Song>) response.body();
 
                 if (fragment_timKiem_baiHat != null) {
                     fragment_timKiem_baiHat.getDataArrayList().clear();
@@ -209,7 +217,7 @@ public class Fragment_TimKiem extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<TimKiemSong>> call, Throwable t) {
+            public void onFailure(Call<List<Song>> call, Throwable t) {
                 Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
             }
         });
@@ -250,6 +258,28 @@ public class Fragment_TimKiem extends Fragment {
 
             @Override
             public void onFailure(Call<List<TimKiemTheLoai>> call, Throwable t) {
+                Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
+            }
+        });
+    }
+
+    public void SearchPlaylist(String keyword) {
+        TimKiemService.getInstance().getTimKiemPlaylistCallback(keyword).enqueue(new Callback<List<TimKiemPlaylist>>() {
+            @Override
+            public void onResponse(Call<List<TimKiemPlaylist>> call, Response<List<TimKiemPlaylist>> response) {
+                ArrayList<TimKiemPlaylist> result = (ArrayList<TimKiemPlaylist>) response.body();
+
+                if (fragment_timKiem_playlist != null) {
+                    fragment_timKiem_playlist.getDataArrayList().clear();
+                    fragment_timKiem_playlist.getDataArrayList().addAll(result);
+                    fragment_timKiem_playlist.UpdateFragment();
+                }
+
+                Log.d("BBB", result.get(0).getTenPlaylist());
+            }
+
+            @Override
+            public void onFailure(Call<List<TimKiemPlaylist>> call, Throwable t) {
                 Toast.makeText(view.getContext(), "Lấy nội dung từ server lỗi", Toast.LENGTH_LONG);
             }
         });

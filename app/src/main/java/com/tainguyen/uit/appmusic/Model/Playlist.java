@@ -17,7 +17,13 @@ private String tenPlaylist;
 @Expose
 private String hinhNen;
 
-public String getIDPlaylist() {
+    public Playlist(String iDPlaylist, String tenPlaylist, String hinhNen) {
+        this.iDPlaylist = iDPlaylist;
+        this.tenPlaylist = tenPlaylist;
+        this.hinhNen = hinhNen;
+    }
+
+    public String getIDPlaylist() {
 return iDPlaylist;
 }
 

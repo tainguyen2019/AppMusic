@@ -1,5 +1,6 @@
 package com.tainguyen.uit.appmusic.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
 import com.tainguyen.uit.appmusic.Adapter.TimKiemAlbumAdapter;
+import com.tainguyen.uit.appmusic.Model.Album;
 import com.tainguyen.uit.appmusic.Model.TimKiemAlbum;
 import com.tainguyen.uit.appmusic.R;
 

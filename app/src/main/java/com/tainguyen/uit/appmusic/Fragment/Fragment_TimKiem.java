@@ -275,7 +275,6 @@ public class Fragment_TimKiem extends Fragment {
                     fragment_timKiem_playlist.UpdateFragment();
                 }
 
-                Log.d("BBB", result.get(0).getTenPlaylist());
             }
 
             @Override

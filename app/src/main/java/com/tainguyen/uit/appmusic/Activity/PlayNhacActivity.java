@@ -24,6 +24,9 @@ import com.tainguyen.uit.appmusic.Fragment.Fragment_Dia_Nhac;
 import com.tainguyen.uit.appmusic.Fragment.Fragment_Play_Danh_Sach_Cac_Bai_Hat;
 import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.R;
+import com.tainguyen.uit.appmusic.Service.APIRetrofitClient;
+import com.tainguyen.uit.appmusic.Service.APIService;
+import com.tainguyen.uit.appmusic.Service.IDataService;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -148,8 +151,20 @@ public class PlayNhacActivity extends AppCompatActivity {
             }
 
             mediaPlayer.start();
+            updateLuotNghe(ArrSong.get(position).getIDBaiHat());
             TimeSong();
             Updatetime();
+        }
+    }
+
+    private void updateLuotNghe(String idBaiHat) {
+        IDataService dataService = APIService.getService();
+        Call<Void> callback = dataService.updateLuotNghe(idBaiHat);
+
+        try {
+            callback.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

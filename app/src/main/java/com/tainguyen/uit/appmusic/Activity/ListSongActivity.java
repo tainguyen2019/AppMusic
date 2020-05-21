@@ -83,6 +83,13 @@ public class ListSongActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        startActivity(getIntent());
+        finish();
+    }
+
     private void getDataAlbum(String idAlbum) {
         IDataService dataService = APIService.getService();
         Call<List<Song>> callback = dataService.getListSongAlbum(idAlbum);

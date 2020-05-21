@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         AnhXa();
         Init();
+
     }
 
     private void Init() {
@@ -54,4 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("Không", null)
                 .show();
     }
+
+
 }

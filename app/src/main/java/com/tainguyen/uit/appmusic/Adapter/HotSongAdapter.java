@@ -1,6 +1,7 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.tainguyen.uit.appmusic.Activity.PlayNhacActivity;
 import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.R;
 
@@ -57,6 +59,16 @@ public class HotSongAdapter extends RecyclerView.Adapter<HotSongAdapter.ViewHold
             textViewCaSi = itemView.findViewById(R.id.textViewCaSi);
             textViewLuotNghe = itemView.findViewById(R.id.textViewLuotNghe);
             imageViewHotSong = itemView.findViewById(R.id.imageViewHotSong);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlayNhacActivity.class);
+                    intent.putExtra("item_song", songArrayList.get(getPosition()));
+
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

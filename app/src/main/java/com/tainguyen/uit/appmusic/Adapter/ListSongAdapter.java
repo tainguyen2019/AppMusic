@@ -1,6 +1,7 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tainguyen.uit.appmusic.Activity.ListSongActivity;
+import com.tainguyen.uit.appmusic.Activity.PlayNhacActivity;
 import com.tainguyen.uit.appmusic.Model.Song;
 import com.tainguyen.uit.appmusic.R;
 
@@ -57,6 +60,16 @@ public class ListSongAdapter extends RecyclerView.Adapter<ListSongAdapter.ViewHo
             textViewSong = itemView.findViewById(R.id.textViewSong);
             textViewSinger = itemView.findViewById(R.id.textViewSinger);
             textViewLuotNghe = itemView.findViewById(R.id.textViewLuotNghe);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlayNhacActivity.class);
+                    intent.putExtra("item_song", songArrayList.get(getPosition()));
+
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }

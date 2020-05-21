@@ -38,6 +38,7 @@ public class Fragment_HotSong extends Fragment {
         view = inflater.inflate(R.layout.fragment_hotsong, container, false);
         recyclerViewHotSong = view.findViewById(R.id.recyclerViewHotSong);
         getData();
+
         return view;
     }
 

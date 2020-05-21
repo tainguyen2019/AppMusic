@@ -1,9 +1,13 @@
 package com.tainguyen.uit.appmusic.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+//import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Song {
+public class Song implements Parcelable {
 
     @SerializedName("IDBaiHat")
     @Expose
@@ -23,6 +27,27 @@ public class Song {
     @SerializedName("LuotNghe")
     @Expose
     private String luotNghe;
+
+    protected Song(Parcel in) {
+        iDBaiHat = in.readString();
+        tenBaiHat = in.readString();
+        caSi = in.readString();
+        hinhAnh = in.readString();
+        linkBaiHat = in.readString();
+        luotNghe = in.readString();
+    }
+
+    public static final Creator<Song> CREATOR = new Creator<Song>() {
+        @Override
+        public Song createFromParcel(Parcel in) {
+            return new Song(in);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
 
     public String getIDBaiHat() {
         return iDBaiHat;
@@ -72,4 +97,18 @@ public class Song {
         this.luotNghe = luotNghe;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(iDBaiHat);
+        dest.writeString(tenBaiHat);
+        dest.writeString(caSi);
+        dest.writeString(hinhAnh);
+        dest.writeString(linkBaiHat);
+        dest.writeString(luotNghe);
+    }
 }

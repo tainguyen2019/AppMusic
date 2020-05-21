@@ -60,4 +60,8 @@ public interface IDataService {
 
     @GET("getAllAlbum.php")
     Call<List<Album>> getAllAlbum();
+
+    @FormUrlEncoded
+    @POST("updateLuotNghe.php")
+    Call<Void> updateLuotNghe(@Field("idbaihat") String IDBaiHat);
 }

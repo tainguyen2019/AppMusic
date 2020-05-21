@@ -20,7 +20,14 @@ private String caSi;
 @Expose
 private String hinhNen;
 
-public String getIDAlbum() {
+    public Album(String iDAlbum, String tenAlbum, String caSi, String hinhNen) {
+        this.iDAlbum = iDAlbum;
+        this.tenAlbum = tenAlbum;
+        this.caSi = caSi;
+        this.hinhNen = hinhNen;
+    }
+
+    public String getIDAlbum() {
 return iDAlbum;
 }
 

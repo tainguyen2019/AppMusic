@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginLeft="10dp">
+
+
+    <ImageView
+        android:id="@+id/imageView_tkab_hinhnenalbum"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="5dp"
+        app:srcCompat="@drawable/ic_launcher_foreground" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/textView_tkab_tenalbum"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="Tên Album"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_tkab_tencasi"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:textSize="16sp"
+            android:text="Tên ca sĩ" />
+
+        <TextView
+            android:id="@+id/textView_tkab_sobaihat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp"
+            android:text="1 bài hát" />
+
+
+    </LinearLayout>
+</LinearLayout>

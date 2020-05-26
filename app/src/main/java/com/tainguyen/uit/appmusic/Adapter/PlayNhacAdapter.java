@@ -1,12 +1,15 @@
 package com.tainguyen.uit.appmusic.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tainguyen.uit.appmusic.Model.Song;
@@ -32,11 +35,19 @@ public class PlayNhacAdapter extends RecyclerView.Adapter<PlayNhacAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Song song=mangbaihat.get(position);
         holder.txtcasi.setText(song.getCaSi());
         holder.txtindex.setText(position+1+"");
         holder.txttenbaihat.setText(song.getTenBaiHat());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("custom-message");
+                intent.putExtra("position",position);
+                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+            }
+        });
     }
 
     @Override

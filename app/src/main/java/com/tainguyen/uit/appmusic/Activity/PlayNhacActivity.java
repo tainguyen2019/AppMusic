@@ -2,9 +2,13 @@ package com.tainguyen.uit.appmusic.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -121,8 +125,29 @@ public class PlayNhacActivity extends AppCompatActivity {
             new PlayMp3().execute(ArrSong.get(0).getLinkBaiHat());
             imgplay.setImageResource(R.drawable.iconpause);
         }
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+                new IntentFilter("custom-message"));
     }
-
+    public BroadcastReceiver mMessageReceiver=new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            position=intent.getIntExtra("position",0);
+            if(mediaPlayer.isPlaying()||mediaPlayer!=null)
+            {
+                mediaPlayer.stop();;
+                mediaPlayer.release();
+                mediaPlayer=null;
+            }
+            if(position<ArrSong.size())
+            {
+                imgplay.setImageResource(R.drawable.iconpause);
+                new PlayMp3().execute(ArrSong.get(position).getLinkBaiHat());
+                fragment_dia_nhac.Playnhac(ArrSong.get(position).getHinhAnh());
+                toolbarplaynhac.setTitle(ArrSong.get(position).getTenBaiHat());
+                Updatetime();
+            }
+        }
+    };
     class PlayMp3 extends AsyncTask<String, Void, String> {
 
         @Override

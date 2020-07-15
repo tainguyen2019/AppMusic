@@ -1,5 +1,6 @@
 package com.tainguyen.uit.appmusic.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -7,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
@@ -14,14 +16,19 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tainguyen.uit.appmusic.Adapter.ViewPagePlayListNhac;
 import com.tainguyen.uit.appmusic.Fragment.Fragment_Dia_Nhac;
@@ -47,7 +54,7 @@ public class PlayNhacActivity extends AppCompatActivity {
     Toolbar toolbarplaynhac;
     TextView txtTimesong, txtTotaltimesong;
     SeekBar sktime;
-    ImageButton imgplay, imgrepeat, imgnext, imgpre, imgrandom;
+    ImageButton imgplay, imgrepeat, imgnext, imgpre, imgrandom, imageButtonTimer;
     ViewPager viewPagerplaynhac;
     public static ArrayList<Song> ArrSong = new ArrayList<>();
     public static ViewPagePlayListNhac adapternhac;
@@ -58,6 +65,8 @@ public class PlayNhacActivity extends AppCompatActivity {
     boolean repeat = false;
     boolean checkrandom = false;
     boolean next = false;
+    boolean timer = false;
+    int minutes = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +107,40 @@ public class PlayNhacActivity extends AppCompatActivity {
         imgpre = findViewById(R.id.imagebuttonpreview);
         imgrandom = findViewById(R.id.imagebuttonsuffle);
         viewPagerplaynhac = findViewById(R.id.viewpagetplaynhac);
+        imageButtonTimer = findViewById(R.id.imageButtonTimer);
+
+        imageButtonTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater li = LayoutInflater. from(PlayNhacActivity.this);
+                View customDialogView = li.inflate(R.layout.custom_dialog, null);
+                AlertDialog.Builder alertDialogBuilder = new
+                        AlertDialog.Builder(PlayNhacActivity.this);
+                alertDialogBuilder.setView(customDialogView);
+                final EditText editTextTimer = (EditText) customDialogView.findViewById(R.id.editTextTimer);
+                alertDialogBuilder.setCancelable(false).setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                if( TextUtils.isEmpty(editTextTimer.getText())){
+                                    editTextTimer.setError( "Vui lòng nhập số phút!" );
+                                }else{
+                                    minutes = Integer.valueOf(editTextTimer.getText().toString());
+                                    timer = true;
+                                    InitTimer(minutes);
+
+                                }
+                            }
+                        })
+                        .setNegativeButton("Cancel",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
 
         setSupportActionBar(toolbarplaynhac);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -128,6 +171,27 @@ public class PlayNhacActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter("custom-message"));
     }
+
+    private void InitTimer(final int time) {
+        CountDownTimer countDownTimer = new CountDownTimer(time * 60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                mediaPlayer.pause();
+                fragment_dia_nhac.Pause();
+                imgplay.setImageResource(R.drawable.iconplay);
+                timer = false;
+                minutes = 0;
+            }
+        };
+
+        countDownTimer.start();
+    }
+
     public BroadcastReceiver mMessageReceiver=new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
